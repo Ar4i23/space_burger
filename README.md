@@ -1,5 +1,3 @@
-# space_burger
-
 # 🍔 Space Burger — Космическая бургерная
 
 <div align="center">
