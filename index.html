@@ -121,9 +121,28 @@
             Каждый бургер — это маленькая вселенная вкусов
           </p>
 
+          <!-- ФИЛЬТРЫ -->
+          <div class="menu-filters">
+            <button
+              class="menu-filters__btn menu-filters__btn--active"
+              data-filter="all"
+            >
+              <span class="menu-filters__icon">🍔</span> Все
+            </button>
+            <button class="menu-filters__btn" data-filter="spicy">
+              <span class="menu-filters__icon">🌶️</span> Острые
+            </button>
+            <button class="menu-filters__btn" data-filter="premium">
+              <span class="menu-filters__icon">⭐</span> Премиум
+            </button>
+            <button class="menu-filters__btn" data-filter="big">
+              <span class="menu-filters__icon">🔥</span> Большие
+            </button>
+          </div>
+
           <div class="menu__grid">
             <!-- Карточка 1 -->
-            <article class="menu-card">
+            <article class="menu-card" data-category="all">
               <img
                 src="img/burger-blackhole-800.png"
                 srcset="
@@ -156,7 +175,7 @@
             </article>
 
             <!-- Карточка 2 -->
-            <article class="menu-card menu-card--spicy">
+            <article class="menu-card menu-card--spicy" data-category="spicy">
               <img
                 src="img/burger-supernova-800.png"
                 srcset="
@@ -189,7 +208,7 @@
             </article>
 
             <!-- Карточка 3 -->
-            <article class="menu-card">
+            <article class="menu-card" data-category="all">
               <img
                 src="img/burger-milkyway-800.png"
                 srcset="
@@ -222,7 +241,10 @@
             </article>
 
             <!-- Карточка 4 -->
-            <article class="menu-card menu-card--premium">
+            <article
+              class="menu-card menu-card--premium"
+              data-category="premium"
+            >
               <img
                 src="img/burger-saturn-800.png"
                 srcset="
@@ -255,7 +277,7 @@
             </article>
 
             <!-- Карточка 5 -->
-            <article class="menu-card menu-card--big">
+            <article class="menu-card menu-card--big" data-category="big spicy">
               <img
                 src="img/burger-redgiant-800.png"
                 srcset="
@@ -288,7 +310,7 @@
             </article>
 
             <!-- Карточка 6 -->
-            <article class="menu-card menu-card--colorful">
+            <article class="menu-card menu-card--colorful" data-category="all">
               <img
                 src="img/burger-nebula-800.png"
                 srcset="
@@ -388,6 +410,134 @@
         </div>
       </section>
     </main>
+    <!-- СЕКЦИЯ ДОСТАВКИ -->
+    <section class="delivery" id="delivery">
+      <div class="container delivery__container">
+        <h2 class="section-title delivery__title">
+          Доставка на <span class="section-title__accent">орбиту</span>
+        </h2>
+        <p class="section-desc delivery__desc">
+          Быстро, надежно и вовремя — как прибытие космического корабля
+        </p>
+
+        <div class="delivery__grid">
+          <!-- Карта доставки -->
+          <!-- Карта доставки (заглушка) -->
+          <div class="delivery__map">
+            <div class="delivery__map-placeholder">
+              <div class="delivery__map-galaxy">
+                <div class="delivery__map-center"></div>
+                <div class="delivery__map-zone delivery__map-zone--1"></div>
+                <div class="delivery__map-zone delivery__map-zone--2"></div>
+                <div class="delivery__map-zone delivery__map-zone--3"></div>
+                <div class="delivery__map-rocket">🚀</div>
+              </div>
+              <div class="delivery__map-label">
+                <h4>ул. Галактическая, 42</h4>
+                <p>Москва</p>
+              </div>
+            </div>
+
+            <a
+              href="https://2gis.ru/moscow"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--secondary delivery__map-link"
+            >
+              <span>🗺️</span>
+              Открыть в 2ГИС
+            </a>
+
+            <div class="delivery__map-legend">
+              <div class="delivery__legend-item">
+                <div
+                  class="delivery__legend-icon delivery__legend-icon--1"
+                  aria-hidden="true"
+                ></div>
+                <p>До 5 км — <strong>Бесплатно</strong></p>
+              </div>
+              <div class="delivery__legend-item">
+                <div
+                  class="delivery__legend-icon delivery__legend-icon--2"
+                  aria-hidden="true"
+                ></div>
+                <p>До 15 км — <strong>250 ₽</strong></p>
+              </div>
+              <div class="delivery__legend-item">
+                <div
+                  class="delivery__legend-icon delivery__legend-icon--3"
+                  aria-hidden="true"
+                ></div>
+                <p>До 30 км — <strong>450 ₽</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Условия доставки -->
+          <div class="delivery__info">
+            <div class="delivery__info-card">
+              <h3 class="delivery__info-title">Условия доставки</h3>
+              <ul class="delivery__info-list">
+                <li class="delivery__info-item">
+                  <span class="delivery__info-icon">✅</span>
+                  <p>Бесплатно при заказе от <strong>1000 ₽</strong></p>
+                </li>
+                <li class="delivery__info-item">
+                  <span class="delivery__info-icon">⏱️</span>
+                  <p>Время доставки — <strong>30 минут</strong></p>
+                </li>
+                <li class="delivery__info-item">
+                  <span class="delivery__info-icon">⚡</span>
+                  <p>Срочная доставка за <strong>15 минут</strong></p>
+                </li>
+                <li class="delivery__info-item">
+                  <span class="delivery__info-icon">📍</span>
+                  <p>Доставка по всей <strong>орбите Земли</strong></p>
+                </li>
+                <li class="delivery__info-item">
+                  <span class="delivery__info-icon">💰</span>
+                  <p>Оплата при получении</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="delivery__info-card">
+              <h3 class="delivery__info-title">Зоны доставки</h3>
+              <div class="delivery__zones">
+                <div class="delivery__zone">
+                  <div class="delivery__zone-icon">🚀</div>
+                  <h4 class="delivery__zone-title">Центр города</h4>
+                  <p class="delivery__zone-desc">
+                    До 5 км от центра, <strong>бесплатно</strong>
+                  </p>
+                </div>
+                <div class="delivery__zone">
+                  <div class="delivery__zone-icon">🌌</div>
+                  <h4 class="delivery__zone-title">Ближайшие районы</h4>
+                  <p class="delivery__zone-desc">
+                    До 15 км от центра, <strong>250 ₽</strong>
+                  </p>
+                </div>
+                <div class="delivery__zone">
+                  <div class="delivery__zone-icon">🪐</div>
+                  <h4 class="delivery__zone-title">Отдаленные районы</h4>
+                  <p class="delivery__zone-desc">
+                    До 30 км от центра, <strong>450 ₽</strong>
+                  </p>
+                </div>
+                <div class="delivery__zone">
+                  <div class="delivery__zone-icon">🪐</div>
+                  <h4 class="delivery__zone-title">Окраины</h4>
+                  <p class="delivery__zone-desc">
+                    До 50 км от центра, <strong>650 ₽</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ПОДВАЛ -->
     <footer class="footer" id="contacts">
@@ -454,6 +604,7 @@
         </div>
       </div>
     </div>
+
     <!-- МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА -->
     <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
       <div class="checkout-modal__overlay"></div>
@@ -461,16 +612,14 @@
         <button class="checkout-modal__close" aria-label="Закрыть форму">
           <span>✕</span>
         </button>
-
         <h2 class="checkout-modal__title">Оформление заказа</h2>
         <p class="checkout-modal__subtitle">Заполни данные для доставки</p>
 
         <form class="checkout-form" id="checkoutForm" novalidate>
           <div class="checkout-form__group">
-            <label class="checkout-form__label" for="name">
-              <span class="checkout-form__icon">👤</span>
-              Ваше имя
-            </label>
+            <label class="checkout-form__label" for="name"
+              ><span class="checkout-form__icon">👤</span> Ваше имя</label
+            >
             <input
               type="text"
               id="name"
@@ -479,14 +628,14 @@
               placeholder="Как к вам обращаться?"
               required
             />
-            <span class="checkout-form__error" id="nameError">Введите имя</span>
+            <span class="checkout-form__error" id="nameError"
+              >Введите корректное имя (только буквы, мин. 2 символа)</span
+            >
           </div>
-
           <div class="checkout-form__group">
-            <label class="checkout-form__label" for="phone">
-              <span class="checkout-form__icon">📱</span>
-              Телефон
-            </label>
+            <label class="checkout-form__label" for="phone"
+              ><span class="checkout-form__icon">📱</span> Телефон</label
+            >
             <input
               type="tel"
               id="phone"
@@ -496,15 +645,13 @@
               required
             />
             <span class="checkout-form__error" id="phoneError"
-              >Введите корректный телефон</span
+              >Введите номер в формате +7 (999) 123-45-67</span
             >
           </div>
-
           <div class="checkout-form__group">
-            <label class="checkout-form__label" for="address">
-              <span class="checkout-form__icon">📍</span>
-              Адрес доставки
-            </label>
+            <label class="checkout-form__label" for="address"
+              ><span class="checkout-form__icon">📍</span> Адрес доставки</label
+            >
             <input
               type="text"
               id="address"
@@ -513,17 +660,18 @@
               placeholder="Улица, дом, квартира"
               required
             />
+
             <span class="checkout-form__error" id="addressError"
-              >Введите адрес доставки</span
+              >Введите полный адрес (улица и номер дома)</span
             >
           </div>
-
           <div class="checkout-form__group">
-            <label class="checkout-form__label" for="comment">
-              <span class="checkout-form__icon">💬</span>
-              Комментарий
-              <span class="checkout-form__optional">(необязательно)</span>
-            </label>
+            <label class="checkout-form__label" for="comment"
+              ><span class="checkout-form__icon">💬</span> Комментарий
+              <span class="checkout-form__optional"
+                >(необязательно)</span
+              ></label
+            >
             <textarea
               id="comment"
               name="comment"
@@ -532,7 +680,6 @@
               rows="3"
             ></textarea>
           </div>
-
           <div class="checkout-form__summary">
             <div class="checkout-form__total">
               <span>Итого к оплате:</span>
@@ -541,13 +688,11 @@
               >
             </div>
           </div>
-
           <button type="submit" class="btn btn--primary checkout-form__submit">
             <span class="checkout-form__submit-text">🚀 Отправить заказ</span>
-            <span class="checkout-form__submit-loading" style="display: none">
-              <span class="spinner"></span>
-              Отправляем...
-            </span>
+            <span class="checkout-form__submit-loading" style="display: none"
+              ><span class="spinner"></span> Отправляем...</span
+            >
           </button>
         </form>
       </div>
@@ -558,8 +703,8 @@
           <div class="checkout-success__rocket">🚀</div>
           <h3 class="checkout-success__title">Заказ принят!</h3>
           <p class="checkout-success__text">
-            Ваш бургер уже летит к вам со скоростью света!<br />
-            Мы свяжемся с вами в течение 5 минут.
+            Ваш бургер уже летит к вам со скоростью света!<br />Мы свяжемся с
+            вами в течение 5 минут.
           </p>
           <button
             class="btn btn--primary checkout-success__btn"

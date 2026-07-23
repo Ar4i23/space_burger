@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // === СОСТОЯНИЕ КОРЗИНЫ ===
   let cart = [];
 
   // === ЭЛЕМЕНТЫ DOM ===
@@ -80,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 2. ОТКРЫТИЕ/ЗАКРЫТИЕ КОРЗИНЫ ===
+  // === 2. УПРАВЛЕНИЕ КОРЗИНОЙ ===
   function openCart() {
     cartModal.classList.add("cart-modal--active");
     document.body.style.overflow = "hidden";
@@ -98,22 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      if (checkoutModal.classList.contains("checkout-modal--active")) {
+      if (checkoutModal.classList.contains("checkout-modal--active"))
         closeCheckout();
-      } else if (cartModal.classList.contains("cart-modal--active")) {
-        closeCart();
-      }
+      else if (cartModal.classList.contains("cart-modal--active")) closeCart();
     }
   });
 
   // === 3. ДОБАВЛЕНИЕ В КОРЗИНУ ===
-  const addToCartBtns = document.querySelectorAll(".menu-card__btn");
-
-  addToCartBtns.forEach((btn) => {
+  document.querySelectorAll(".menu-card__btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const productId = parseInt(btn.dataset.id);
-      addToCart(productId);
-
+      addToCart(parseInt(btn.dataset.id));
       cartIcon.style.transform = "scale(1.3)";
       setTimeout(() => {
         cartIcon.style.transform = "scale(1)";
@@ -123,34 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addToCart(productId) {
     const existingItem = cart.find((item) => item.id === productId);
-
-    if (existingItem) {
-      existingItem.quantity++;
-    } else {
-      cart.push({ id: productId, quantity: 1 });
-    }
+    if (existingItem) existingItem.quantity++;
+    else cart.push({ id: productId, quantity: 1 });
 
     updateCartCount();
-
-    if (cartModal.classList.contains("cart-modal--active")) {
-      renderCart();
-    }
+    if (cartModal.classList.contains("cart-modal--active")) renderCart();
   }
 
   function updateCartCount() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
   }
 
   function renderCart() {
     if (cart.length === 0) {
-      cartItemsContainer.innerHTML = `
-        <div class="cart-modal__empty">
-          <span class="cart-modal__empty-icon">🛒</span>
-          <p>Корзина пуста</p>
-          <p class="cart-modal__empty-text">Добавь бургеры из меню!</p>
-        </div>
-      `;
+      cartItemsContainer.innerHTML = `<div class="cart-modal__empty"><span class="cart-modal__empty-icon">🛒</span><p>Корзина пуста</p><p class="cart-modal__empty-text">Добавь бургеры из меню!</p></div>`;
       cartFooter.style.display = "none";
       return;
     }
@@ -162,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const product = products[item.id];
       const itemTotal = product.price * item.quantity;
       totalPrice += itemTotal;
-
       html += `
         <div class="cart-item">
           <img src="${product.image}" alt="${product.name}" class="cart-item__img">
@@ -178,45 +156,42 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <button class="cart-item__remove" data-id="${item.id}" aria-label="Удалить">🗑</button>
           </div>
-        </div>
-      `;
+        </div>`;
     });
 
     cartItemsContainer.innerHTML = html;
     cartTotal.textContent = `${totalPrice} ₽`;
     cartFooter.style.display = "block";
 
-    document.querySelectorAll(".cart-item__increase").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = parseInt(btn.dataset.id);
-        changeQuantity(id, 1);
-      });
-    });
-
-    document.querySelectorAll(".cart-item__decrease").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = parseInt(btn.dataset.id);
-        changeQuantity(id, -1);
-      });
-    });
-
-    document.querySelectorAll(".cart-item__remove").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = parseInt(btn.dataset.id);
-        removeFromCart(id);
-      });
-    });
+    document
+      .querySelectorAll(".cart-item__increase")
+      .forEach((btn) =>
+        btn.addEventListener("click", () =>
+          changeQuantity(parseInt(btn.dataset.id), 1),
+        ),
+      );
+    document
+      .querySelectorAll(".cart-item__decrease")
+      .forEach((btn) =>
+        btn.addEventListener("click", () =>
+          changeQuantity(parseInt(btn.dataset.id), -1),
+        ),
+      );
+    document
+      .querySelectorAll(".cart-item__remove")
+      .forEach((btn) =>
+        btn.addEventListener("click", () =>
+          removeFromCart(parseInt(btn.dataset.id)),
+        ),
+      );
   }
 
   function changeQuantity(productId, delta) {
     const item = cart.find((item) => item.id === productId);
-
     if (item) {
       item.quantity += delta;
-
-      if (item.quantity <= 0) {
-        removeFromCart(productId);
-      } else {
+      if (item.quantity <= 0) removeFromCart(productId);
+      else {
         updateCartCount();
         renderCart();
       }
@@ -232,14 +207,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // === 4. ОФОРМЛЕНИЕ ЗАКАЗА ===
   function openCheckout() {
     if (cart.length === 0) return;
-
-    const totalPrice = cart.reduce((sum, item) => {
-      return sum + products[item.id].price * item.quantity;
-    }, 0);
-
+    const totalPrice = cart.reduce(
+      (sum, item) => sum + products[item.id].price * item.quantity,
+      0,
+    );
     checkoutTotal.textContent = `${totalPrice} ₽`;
     closeCart();
-
     setTimeout(() => {
       checkoutModal.classList.add("checkout-modal--active");
       document.body.style.overflow = "hidden";
@@ -250,8 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutModal.classList.remove("checkout-modal--active");
     checkoutSuccess.classList.remove("checkout-success--active");
     document.body.style.overflow = "";
-
-    // Сброс формы
     setTimeout(() => {
       checkoutForm.reset();
       clearErrors();
@@ -264,9 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   successCloseBtn.addEventListener("click", () => {
     closeCheckout();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // === 5. ВАЛИДАЦИЯ ФОРМЫ ===
+  // === 5. УМНАЯ ВАЛИДАЦИЯ В РЕАЛЬНОМ ВРЕМЕНИ ===
   function clearErrors() {
     document.querySelectorAll(".checkout-form__input").forEach((input) => {
       input.classList.remove("checkout-form__input--error");
@@ -279,50 +251,112 @@ document.addEventListener("DOMContentLoaded", () => {
   function showError(inputId, errorId) {
     const input = document.getElementById(inputId);
     const error = document.getElementById(errorId);
-
-    input.classList.add("checkout-form__input--error");
-    error.classList.add("checkout-form__error--visible");
+    if (input) input.classList.add("checkout-form__input--error");
+    if (error) error.classList.add("checkout-form__error--visible");
   }
 
-  function validateForm() {
-    clearErrors();
+  function clearErrors() {
+    document.querySelectorAll(".checkout-form__input").forEach((input) => {
+      // Убираем и ошибку, и валидный стиль при сбросе формы
+      input.classList.remove(
+        "checkout-form__input--error",
+        "checkout-form__input--valid",
+      );
+    });
+    document.querySelectorAll(".checkout-form__error").forEach((error) => {
+      error.classList.remove("checkout-form__error--visible");
+    });
+  }
 
+  const validators = {
+    name: {
+      regex: /^[a-zA-Zа-яА-ЯёЁ\s\-]{2,50}$/,
+      errorId: "nameError",
+    },
+    phone: {
+      regex: /^(\+7|8)[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/,
+      errorId: "phoneError",
+    },
+    address: {
+      regex: /^(?=.*\d)(?=.*[a-zA-Zа-яА-ЯёЁ]).{5,100}$/,
+      errorId: "addressError",
+    },
+  };
+
+  function validateField(fieldId) {
+    const input = document.getElementById(fieldId);
+    if (!input) return false;
+
+    const value = input.value.trim();
+    const validator = validators[fieldId];
+    const errorElement = document.getElementById(validator.errorId);
+
+    // 1. Если поле пустое - возвращаем в нейтральное состояние
+    if (value.length === 0) {
+      input.classList.remove(
+        "checkout-form__input--error",
+        "checkout-form__input--valid",
+      );
+      if (errorElement)
+        errorElement.classList.remove("checkout-form__error--visible");
+      return false;
+    }
+
+    // 2. Если заполнено неправильно - красим в красный
+    if (!validator.regex.test(value)) {
+      input.classList.add("checkout-form__input--error");
+      input.classList.remove("checkout-form__input--valid");
+      if (errorElement)
+        errorElement.classList.add("checkout-form__error--visible");
+      return false;
+    }
+
+    // 3. Если всё верно - красим в зеленый ✅
+    input.classList.remove("checkout-form__input--error");
+    input.classList.add("checkout-form__input--valid");
+    if (errorElement)
+      errorElement.classList.remove("checkout-form__error--visible");
+
+    return true;
+  }
+
+  // Навешиваем события в реальном времени
+  Object.keys(validators).forEach((fieldId) => {
+    const input = document.getElementById(fieldId);
+    if (!input) return;
+
+    input.addEventListener("input", () => {
+      validateField(fieldId);
+    });
+
+    input.addEventListener("blur", () => {
+      validateField(fieldId);
+    });
+  });
+
+  // Финальная проверка перед отправкой
+  function validateForm() {
     const name = document.getElementById("name").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const address = document.getElementById("address").value.trim();
 
     let isValid = true;
 
-    if (name.length < 2) {
-      showError("name", "nameError");
+    if (!validators.name.regex.test(name)) {
+      showError("name", validators.name.errorId);
       isValid = false;
     }
-
-    if (phone.length < 10) {
-      showError("phone", "phoneError");
+    if (!validators.phone.regex.test(phone)) {
+      showError("phone", validators.phone.errorId);
       isValid = false;
     }
-
-    if (address.length < 5) {
-      showError("address", "addressError");
+    if (!validators.address.regex.test(address)) {
+      showError("address", validators.address.errorId);
       isValid = false;
     }
 
     return isValid;
   }
-
-  // Убираем ошибку при вводе
-  document.querySelectorAll(".checkout-form__input").forEach((input) => {
-    input.addEventListener("input", () => {
-      input.classList.remove("checkout-form__input--error");
-      const errorElement = input.parentElement.querySelector(
-        ".checkout-form__error",
-      );
-      if (errorElement) {
-        errorElement.classList.remove("checkout-form__error--visible");
-      }
-    });
-  });
 
   // === 6. ОТПРАВКА ФОРМЫ ===
   checkoutForm.addEventListener("submit", (e) => {
@@ -330,7 +364,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!validateForm()) return;
 
-    // Показываем загрузку
     const submitBtn = checkoutForm.querySelector(".checkout-form__submit");
     const submitText = submitBtn.querySelector(".checkout-form__submit-text");
     const submitLoading = submitBtn.querySelector(
@@ -341,17 +374,12 @@ document.addEventListener("DOMContentLoaded", () => {
     submitText.style.display = "none";
     submitLoading.style.display = "flex";
 
-    // Имитация отправки (2 секунды)
     setTimeout(() => {
-      // Скрываем форму, показываем успех
       checkoutForm.style.display = "none";
       checkoutSuccess.classList.add("checkout-success--active");
-
-      // Очищаем корзину
       cart = [];
       updateCartCount();
 
-      // Возвращаем кнопку в исходное состояние
       submitBtn.disabled = false;
       submitText.style.display = "inline";
       submitLoading.style.display = "none";
@@ -359,9 +387,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   });
 
-  // === 7. АНИМАЦИЯ ПОЯВЛЕНИЯ СЕКЦИИ "О НАС" ===
+  // === 7. АНИМАЦИЯ ПОЯВЛЕНИЯ "О НАС" ===
   const featureCards = document.querySelectorAll(".about__feature");
-
   if (featureCards.length > 0) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -372,16 +399,33 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      {
-        threshold: 0.2,
-      },
+      { threshold: 0.2 },
     );
-
-    featureCards.forEach((card) => {
-      observer.observe(card);
-    });
+    featureCards.forEach((card) => observer.observe(card));
   }
-});
 
-// Фон крутится автоматически через CSS animation (scrollBg)
-// JS не нужен для этого - работает плавнее и быстрее!
+  // === 8. ФИЛЬТРАЦИЯ МЕНЮ ===
+  const filterBtns = document.querySelectorAll(".menu-filters__btn");
+  const menuCards = document.querySelectorAll(".menu-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) =>
+        b.classList.remove("menu-filters__btn--active"),
+      );
+      btn.classList.add("menu-filters__btn--active");
+      const filterValue = btn.dataset.filter;
+
+      menuCards.forEach((card) => {
+        const categories = card.dataset.category.split(" ");
+        if (filterValue === "all" || categories.includes(filterValue)) {
+          card.classList.remove("menu-card--hidden");
+          card.classList.add("menu-card--visible");
+        } else {
+          card.classList.remove("menu-card--visible");
+          card.classList.add("menu-card--hidden");
+        }
+      });
+    });
+  });
+});
