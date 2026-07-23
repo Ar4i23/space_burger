@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Space Burger — Космические бургеры в твоем городе</title>
+    <meta
+      name="description"
+      content="Space Burger — уникальный ресторан космической кухни. Попробуйте бургеры «Черная дыра» и «Сверхновая». Доставка по городу, атмосферный интерьер."
+    />
+    <meta
+      name="keywords"
+      content="бургерная, космическая еда, space burger, доставка бургеров, рестораны, фастфуд"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Space Burger — Вкус другой галактики" />
+    <meta
+      property="og:description"
+      content="Уникальные бургеры, рожденные в космосе. Забронируйте столик или закажите доставку!"
+    />
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:image" content="img/og-cover.jpg" />
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- JSON-LD микроразметка -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Space Burger",
+        "image": "img/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ул. Галактическая, 42",
+          "addressLocality": "Москва",
+          "addressCountry": "RU"
+        },
+        "servesCuisine": "American, Fast Food, Cosmic",
+        "priceRange": "$$"
+      }
+    </script>
+  </head>
+  <body class="page">
+    <!-- Космический фон -->
+    <div class="space-bg" aria-hidden="true">
+      <div class="space-bg__layer"></div>
+    </div>
+
+    <!-- ШАПКА -->
+    <header class="header">
+      <div class="container header__container">
+        <a href="/" class="logo header__logo">
+          <span class="logo__icon">🍔</span>
+          <span class="logo__text"
+            >Space<span class="logo__text--accent">Burger</span></span
+          >
+        </a>
+
+        <nav class="nav header__nav" aria-label="Главная навигация">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">Меню</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">О нас</a>
+            </li>
+            <li class="nav__item">
+              <a href="#delivery" class="nav__link">Доставка</a>
+            </li>
+            <li class="nav__item">
+              <a href="#contacts" class="nav__link">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+
+        <button class="btn-cart header__cart" aria-label="Открыть корзину">
+          <span class="btn-cart__icon">🛒</span>
+          <span class="btn-cart__count">0</span>
+        </button>
+
+        <button
+          class="burger-btn header__burger"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="main">
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="container hero__container">
+          <h1 class="hero__title">
+            Вкус <span class="hero__title--accent">другой</span> галактики
+          </h1>
+          <p class="hero__subtitle">
+            Бургеры, которые взрывают рецепторы. Собираем их из лучших
+            ингредиентов на орбите Земли.
+          </p>
+          <a href="#menu" class="btn btn--primary hero__btn">Изучить меню</a>
+        </div>
+      </section>
+
+      <!-- MENU SECTION -->
+      <section class="menu" id="menu">
+        <div class="container menu__container">
+          <h2 class="section-title menu__title">
+            Наше <span class="section-title__accent">Меню</span>
+          </h2>
+          <p class="section-desc menu__desc">
+            Каждый бургер — это маленькая вселенная вкусов
+          </p>
+
+          <div class="menu__grid">
+            <!-- Карточка 1 -->
+            <article class="menu-card">
+              <img
+                src="img/burger-blackhole-800.png"
+                srcset="
+                  img/burger-blackhole-400.png   400w,
+                  img/burger-blackhole-800.png   800w,
+                  img/burger-blackhole-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Бургер Черная дыра"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Черная дыра</h3>
+                <p class="menu-card__desc">
+                  Двойная мясная вселенная, черная булочка, соус «Темная
+                  материя» и сыр чеддер.
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">450 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="1"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Карточка 2 -->
+            <article class="menu-card menu-card--spicy">
+              <img
+                src="img/burger-supernova-800.png"
+                srcset="
+                  img/burger-supernova-400.png   400w,
+                  img/burger-supernova-800.png   800w,
+                  img/burger-supernova-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Острый бургер Сверхновая"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Сверхновая 🌶️</h3>
+                <p class="menu-card__desc">
+                  Взрывной вкус! Мраморная говядина, халапеньо, перечный джек и
+                  соус «Искра».
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">520 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="2"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Карточка 3 -->
+            <article class="menu-card">
+              <img
+                src="img/burger-milkyway-800.png"
+                srcset="
+                  img/burger-milkyway-400.png   400w,
+                  img/burger-milkyway-800.png   800w,
+                  img/burger-milkyway-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Классический бургер Млечный путь"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Млечный путь</h3>
+                <p class="menu-card__desc">
+                  Нежный сливочный соус, хрустящие луковые кольца, свежий салат
+                  и сочная котлета.
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">390 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="3"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Карточка 4 -->
+            <article class="menu-card menu-card--premium">
+              <img
+                src="img/burger-saturn-800.png"
+                srcset="
+                  img/burger-saturn-400.png   400w,
+                  img/burger-saturn-800.png   800w,
+                  img/burger-saturn-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Бургер Сатурн"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Сатурн 🪐</h3>
+                <p class="menu-card__desc">
+                  Три луковых кольца вокруг котлеты, бекон, сыр гауда и соус
+                  «Кольца планет».
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">580 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="4"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Карточка 5 -->
+            <article class="menu-card menu-card--big">
+              <img
+                src="img/burger-redgiant-800.png"
+                srcset="
+                  img/burger-redgiant-400.png   400w,
+                  img/burger-redgiant-800.png   800w,
+                  img/burger-redgiant-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Огромный бургер Красный гигант"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Красный гигант 🔥</h3>
+                <p class="menu-card__desc">
+                  Тройная котлета, три вида сыра, бекон, томаты и острый соус
+                  «Звездная пыль».
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">690 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="5"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Карточка 6 -->
+            <article class="menu-card menu-card--colorful">
+              <img
+                src="img/burger-nebula-800.png"
+                srcset="
+                  img/burger-nebula-400.png   400w,
+                  img/burger-nebula-800.png   800w,
+                  img/burger-nebula-1200.png 1200w
+                "
+                sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                alt="Разноцветный бургер Туманность"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Туманность Ориона 🌈</h3>
+                <p class="menu-card__desc">
+                  Три соуса, маринованные овощи, куриная котлета и
+                  карамелизированный лук.
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">490 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="6"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- О НАС -->
+      <section class="about" id="about">
+        <div class="container about__container">
+          <h2 class="section-title about__title">
+            Наша <span class="section-title__accent">История</span>
+          </h2>
+          <p class="section-desc about__desc">
+            Как родилась идея космической бургерной
+          </p>
+
+          <div class="about__story">
+            <div class="about__story-text">
+              <p>
+                В <strong>2024 году</strong> группа астронавтов-гурманов
+                вернулась из межгалактического путешествия с одной целью —
+                принести на Землю вкус настоящей космической кухни.
+              </p>
+              <p>
+                Мы изучили рецепты из <strong>47 галактик</strong>, собрали
+                лучшие ингредиенты со всех уголков Вселенной и создали бургеры,
+                которые взрывают рецепторы сильнее, чем сверхновая звезда.
+              </p>
+            </div>
+            <div class="about__story-visual">
+              <div class="about__astronaut">👨‍🚀</div>
+              <div class="about__rocket">🚀</div>
+            </div>
+          </div>
+
+          <div class="about__features">
+            <div class="feature-card about__feature">
+              <div class="feature-card__icon">🌍</div>
+              <h3 class="feature-card__title">Ингредиенты со всего мира</h3>
+              <p class="feature-card__desc">
+                Собираем лучшие продукты из 23 стран, как космонавт собирает
+                образцы с планет.
+              </p>
+            </div>
+            <div class="feature-card about__feature">
+              <div class="feature-card__icon">🔬</div>
+              <h3 class="feature-card__title">Космические технологии</h3>
+              <p class="feature-card__desc">
+                Наши рецепты разработаны с точностью до грамма, как траектория
+                полёта к Марсу.
+              </p>
+            </div>
+            <div class="feature-card about__feature">
+              <div class="feature-card__icon">🛸</div>
+              <h3 class="feature-card__title">Атмосфера космоса</h3>
+              <p class="feature-card__desc">
+                Интерьер нашего ресторана переносит вас на борт космического
+                корабля будущего.
+              </p>
+            </div>
+            <div class="feature-card about__feature">
+              <div class="feature-card__icon">⚡</div>
+              <h3 class="feature-card__title">Скорость света</h3>
+              <p class="feature-card__desc">
+                Доставка за 30 минут или бургер бесплатно. Быстрее только фотон!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer" id="contacts">
+      <div class="container footer__container">
+        <div class="footer__col">
+          <a href="/" class="logo footer__logo">
+            <span class="logo__icon">🍔</span>
+            <span class="logo__text"
+              >Space<span class="logo__text--accent">Burger</span></span
+            >
+          </a>
+          <p class="footer__desc">Работаем на всей орбите Земли с 2024 года.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Контакты</h4>
+          <address class="footer__address">
+            <p>г. Москва, ул. Галактическая, 42</p>
+            <a href="tel:+79991234567" class="footer__link"
+              >+7 (999) 123-45-67</a
+            >
+            <a href="mailto:hello@spaceburger.ru" class="footer__link"
+              >hello@spaceburger.ru</a
+            >
+          </address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Соцсети</h4>
+          <div class="socials footer__socials">
+            <a href="#" class="socials__link" aria-label="Телеграм">TG</a>
+            <a href="#" class="socials__link" aria-label="ВКонтакте">VK</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; 2024 Space Burger. Все права защищены во всех галактиках.
+        </p>
+      </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+    <div class="cart-modal" id="cartModal" aria-hidden="true">
+      <div class="cart-modal__overlay"></div>
+      <div class="cart-modal__content">
+        <button class="cart-modal__close" aria-label="Закрыть корзину">
+          <span>✕</span>
+        </button>
+        <h2 class="cart-modal__title">Твоя корзина</h2>
+        <div class="cart-modal__items" id="cartItems">
+          <div class="cart-modal__empty">
+            <span class="cart-modal__empty-icon">🛒</span>
+            <p>Корзина пуста</p>
+            <p class="cart-modal__empty-text">Добавь бургеры из меню!</p>
+          </div>
+        </div>
+        <div class="cart-modal__footer" id="cartFooter" style="display: none">
+          <div class="cart-modal__total">
+            <span class="cart-modal__total-label">Итого:</span>
+            <span class="cart-modal__total-price" id="cartTotal">0 ₽</span>
+          </div>
+          <button class="btn btn--primary cart-modal__checkout">
+            Оформить заказ
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА -->
+    <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+      <div class="checkout-modal__overlay"></div>
+      <div class="checkout-modal__content">
+        <button class="checkout-modal__close" aria-label="Закрыть форму">
+          <span>✕</span>
+        </button>
+
+        <h2 class="checkout-modal__title">Оформление заказа</h2>
+        <p class="checkout-modal__subtitle">Заполни данные для доставки</p>
+
+        <form class="checkout-form" id="checkoutForm" novalidate>
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="name">
+              <span class="checkout-form__icon">👤</span>
+              Ваше имя
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="checkout-form__input"
+              placeholder="Как к вам обращаться?"
+              required
+            />
+            <span class="checkout-form__error" id="nameError">Введите имя</span>
+          </div>
+
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="phone">
+              <span class="checkout-form__icon">📱</span>
+              Телефон
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="checkout-form__input"
+              placeholder="+7 (999) 123-45-67"
+              required
+            />
+            <span class="checkout-form__error" id="phoneError"
+              >Введите корректный телефон</span
+            >
+          </div>
+
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="address">
+              <span class="checkout-form__icon">📍</span>
+              Адрес доставки
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="checkout-form__input"
+              placeholder="Улица, дом, квартира"
+              required
+            />
+            <span class="checkout-form__error" id="addressError"
+              >Введите адрес доставки</span
+            >
+          </div>
+
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="comment">
+              <span class="checkout-form__icon">💬</span>
+              Комментарий
+              <span class="checkout-form__optional">(необязательно)</span>
+            </label>
+            <textarea
+              id="comment"
+              name="comment"
+              class="checkout-form__input checkout-form__textarea"
+              placeholder="Пожелания к заказу, код домофона и т.д."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="checkout-form__summary">
+            <div class="checkout-form__total">
+              <span>Итого к оплате:</span>
+              <span class="checkout-form__total-price" id="checkoutTotal"
+                >0 ₽</span
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary checkout-form__submit">
+            <span class="checkout-form__submit-text">🚀 Отправить заказ</span>
+            <span class="checkout-form__submit-loading" style="display: none">
+              <span class="spinner"></span>
+              Отправляем...
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Экран успеха -->
+      <div class="checkout-success" id="checkoutSuccess">
+        <div class="checkout-success__content">
+          <div class="checkout-success__rocket">🚀</div>
+          <h3 class="checkout-success__title">Заказ принят!</h3>
+          <p class="checkout-success__text">
+            Ваш бургер уже летит к вам со скоростью света!<br />
+            Мы свяжемся с вами в течение 5 минут.
+          </p>
+          <button
+            class="btn btn--primary checkout-success__btn"
+            id="successCloseBtn"
+          >
+            Отлично!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
