@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === ДАННЫЕ О ТОВАРАХ ===
+  // ==========================================
+  // 1. ДАННЫЕ О ТОВАРАХ
+  // ==========================================
   const products = {
     1: {
       id: 1,
@@ -39,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  let cart = [];
-
-  // === ЭЛЕМЕНТЫ DOM ===
+  // ==========================================
+  // 2. ЭЛЕМЕНТЫ DOM (сначала находим все элементы на странице)
+  // ==========================================
   const cartModal = document.getElementById("cartModal");
   const cartItemsContainer = document.getElementById("cartItems");
   const cartFooter = document.getElementById("cartFooter");
@@ -60,26 +62,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutCloseBtn = document.querySelector(".checkout-modal__close");
   const checkoutOverlay = document.querySelector(".checkout-modal__overlay");
 
-  // === 1. МОБИЛЬНОЕ МЕНЮ ===
   const burgerBtn = document.querySelector(".burger-btn");
   const nav = document.querySelector(".nav");
   const navLinks = document.querySelectorAll(".nav__link");
 
-  burgerBtn.addEventListener("click", () => {
-    const isActive = nav.classList.toggle("nav--active");
-    burgerBtn.setAttribute("aria-expanded", isActive);
-    burgerBtn.classList.toggle("burger-btn--active");
-  });
+  const featureCards = document.querySelectorAll(".about__feature");
+  const filterBtns = document.querySelectorAll(".menu-filters__btn");
+  const menuCards = document.querySelectorAll(".menu-card");
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("nav--active");
-      burgerBtn.setAttribute("aria-expanded", "false");
-      burgerBtn.classList.remove("burger-btn--active");
-    });
-  });
+  // ==========================================
+  // 3. СОСТОЯНИЕ КОРЗИНЫ
+  // ==========================================
+  let cart = [];
 
-  // === 2. УПРАВЛЕНИЕ КОРЗИНОЙ ===
+  // ==========================================
+  // 4. ФУНКЦИИ (теперь они могут безопасно использовать cartCount)
+  // ==========================================
+  function updateCartCount() {
+    if (cartCount) {
+      cartCount.textContent = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0,
+      );
+    }
+  }
+
+  function saveCart() {
+    localStorage.setItem("spaceBurgerCart", JSON.stringify(cart));
+  }
+
+  function loadCart() {
+    const saved = localStorage.getItem("spaceBurgerCart");
+    if (saved) {
+      try {
+        cart = JSON.parse(saved);
+        updateCartCount();
+      } catch (e) {
+        console.error("Ошибка загрузки корзины:", e);
+        cart = [];
+        localStorage.removeItem("spaceBurgerCart");
+      }
+    }
+  }
+
   function openCart() {
     cartModal.classList.add("cart-modal--active");
     document.body.style.overflow = "hidden";
@@ -91,40 +116,53 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   }
 
-  cartIcon.addEventListener("click", openCart);
-  closeBtn.addEventListener("click", closeCart);
-  overlay.addEventListener("click", closeCart);
+  // === ФУНКЦИЯ ДЛЯ TOAST УВЕДОМЛЕНИЙ ===
+  function showToast(message, icon = "🍔") {
+    const container = document.getElementById("toast-container");
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (checkoutModal.classList.contains("checkout-modal--active"))
-        closeCheckout();
-      else if (cartModal.classList.contains("cart-modal--active")) closeCart();
-    }
-  });
+    // Создаем элемент уведомления
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `<span class="toast__icon">${icon}</span><span>${message}</span>`;
 
-  // === 3. ДОБАВЛЕНИЕ В КОРЗИНУ ===
-  document.querySelectorAll(".menu-card__btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      addToCart(parseInt(btn.dataset.id));
-      cartIcon.style.transform = "scale(1.3)";
+    // Добавляем в контейнер
+    container.appendChild(toast);
+
+    // Удаляем через 3 секунды с анимацией исчезновения
+    setTimeout(() => {
+      toast.classList.add("toast--hide");
+      // Ждем окончания анимации (0.3s) перед полным удалением из DOM
       setTimeout(() => {
-        cartIcon.style.transform = "scale(1)";
-      }, 200);
-    });
-  });
-
-  function addToCart(productId) {
-    const existingItem = cart.find((item) => item.id === productId);
-    if (existingItem) existingItem.quantity++;
-    else cart.push({ id: productId, quantity: 1 });
-
-    updateCartCount();
-    if (cartModal.classList.contains("cart-modal--active")) renderCart();
+        toast.remove();
+      }, 300);
+    }, 3000);
   }
 
-  function updateCartCount() {
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+  // === ДОБАВЛЕНИЕ В КОРЗИНУ (ОБНОВЛЕННАЯ) ===
+  function addToCart(productId) {
+    const existingItem = cart.find((item) => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ id: productId, quantity: 1 });
+    }
+
+    updateCartCount();
+    saveCart();
+
+    // Показываем уведомление с именем продукта
+    const productName = products[productId].name;
+    showToast(`${productName} добавлен в корзину!`);
+
+    // Анимация иконки корзины (оставляем, это классный эффект)
+    cartIcon.style.transform = "scale(1.3)";
+    setTimeout(() => {
+      cartIcon.style.transform = "scale(1)";
+    }, 200);
+
+    if (cartModal.classList.contains("cart-modal--active")) {
+      renderCart();
+    }
   }
 
   function renderCart() {
@@ -193,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (item.quantity <= 0) removeFromCart(productId);
       else {
         updateCartCount();
+        saveCart();
         renderCart();
       }
     }
@@ -201,10 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function removeFromCart(productId) {
     cart = cart.filter((item) => item.id !== productId);
     updateCartCount();
+    saveCart();
     renderCart();
   }
 
-  // === 4. ОФОРМЛЕНИЕ ЗАКАЗА ===
   function openCheckout() {
     if (cart.length === 0) return;
     const totalPrice = cart.reduce(
@@ -229,19 +268,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }
 
-  checkoutBtn.addEventListener("click", openCheckout);
-  checkoutCloseBtn.addEventListener("click", closeCheckout);
-  checkoutOverlay.addEventListener("click", closeCheckout);
-
-  successCloseBtn.addEventListener("click", () => {
-    closeCheckout();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // === 5. УМНАЯ ВАЛИДАЦИЯ В РЕАЛЬНОМ ВРЕМЕНИ ===
   function clearErrors() {
     document.querySelectorAll(".checkout-form__input").forEach((input) => {
-      input.classList.remove("checkout-form__input--error");
+      input.classList.remove(
+        "checkout-form__input--error",
+        "checkout-form__input--valid",
+      );
     });
     document.querySelectorAll(".checkout-form__error").forEach((error) => {
       error.classList.remove("checkout-form__error--visible");
@@ -255,24 +287,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (error) error.classList.add("checkout-form__error--visible");
   }
 
-  function clearErrors() {
-    document.querySelectorAll(".checkout-form__input").forEach((input) => {
-      // Убираем и ошибку, и валидный стиль при сбросе формы
-      input.classList.remove(
-        "checkout-form__input--error",
-        "checkout-form__input--valid",
-      );
-    });
-    document.querySelectorAll(".checkout-form__error").forEach((error) => {
-      error.classList.remove("checkout-form__error--visible");
-    });
-  }
-
   const validators = {
-    name: {
-      regex: /^[a-zA-Zа-яА-ЯёЁ\s\-]{2,50}$/,
-      errorId: "nameError",
-    },
+    name: { regex: /^[a-zA-Zа-яА-ЯёЁ\s\-]{2,50}$/, errorId: "nameError" },
     phone: {
       regex: /^(\+7|8)[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/,
       errorId: "phoneError",
@@ -291,7 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const validator = validators[fieldId];
     const errorElement = document.getElementById(validator.errorId);
 
-    // 1. Если поле пустое - возвращаем в нейтральное состояние
     if (value.length === 0) {
       input.classList.remove(
         "checkout-form__input--error",
@@ -302,7 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    // 2. Если заполнено неправильно - красим в красный
     if (!validator.regex.test(value)) {
       input.classList.add("checkout-form__input--error");
       input.classList.remove("checkout-form__input--valid");
@@ -311,7 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    // 3. Если всё верно - красим в зеленый ✅
     input.classList.remove("checkout-form__input--error");
     input.classList.add("checkout-form__input--valid");
     if (errorElement)
@@ -320,26 +333,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  // Навешиваем события в реальном времени
-  Object.keys(validators).forEach((fieldId) => {
-    const input = document.getElementById(fieldId);
-    if (!input) return;
-
-    input.addEventListener("input", () => {
-      validateField(fieldId);
-    });
-
-    input.addEventListener("blur", () => {
-      validateField(fieldId);
-    });
-  });
-
-  // Финальная проверка перед отправкой
   function validateForm() {
     const name = document.getElementById("name").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const address = document.getElementById("address").value.trim();
-
     let isValid = true;
 
     if (!validators.name.regex.test(name)) {
@@ -358,10 +355,73 @@ document.addEventListener("DOMContentLoaded", () => {
     return isValid;
   }
 
-  // === 6. ОТПРАВКА ФОРМЫ ===
+  // ==========================================
+  // 5. ИНИЦИАЛИЗАЦИЯ И СОБЫТИЯ (запускаем ПОСЛЕ определения всего)
+  // ==========================================
+
+  // Загружаем корзину из localStorage
+  loadCart();
+
+  // Мобильное меню
+  burgerBtn.addEventListener("click", () => {
+    const isActive = nav.classList.toggle("nav--active");
+    burgerBtn.setAttribute("aria-expanded", isActive);
+    burgerBtn.classList.toggle("burger-btn--active");
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("nav--active");
+      burgerBtn.setAttribute("aria-expanded", "false");
+      burgerBtn.classList.remove("burger-btn--active");
+    });
+  });
+
+  // Управление корзиной
+  cartIcon.addEventListener("click", openCart);
+  closeBtn.addEventListener("click", closeCart);
+  overlay.addEventListener("click", closeCart);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (checkoutModal.classList.contains("checkout-modal--active"))
+        closeCheckout();
+      else if (cartModal.classList.contains("cart-modal--active")) closeCart();
+    }
+  });
+
+  // Добавление в корзину
+  document.querySelectorAll(".menu-card__btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      addToCart(parseInt(btn.dataset.id));
+      cartIcon.style.transform = "scale(1.3)";
+      setTimeout(() => {
+        cartIcon.style.transform = "scale(1)";
+      }, 200);
+    });
+  });
+
+  // Оформление заказа
+  checkoutBtn.addEventListener("click", openCheckout);
+  checkoutCloseBtn.addEventListener("click", closeCheckout);
+  checkoutOverlay.addEventListener("click", closeCheckout);
+
+  successCloseBtn.addEventListener("click", () => {
+    closeCheckout();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Валидация в реальном времени
+  Object.keys(validators).forEach((fieldId) => {
+    const input = document.getElementById(fieldId);
+    if (!input) return;
+    input.addEventListener("input", () => validateField(fieldId));
+    input.addEventListener("blur", () => validateField(fieldId));
+  });
+
+  // Отправка формы
   checkoutForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     const submitBtn = checkoutForm.querySelector(".checkout-form__submit");
@@ -379,6 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutSuccess.classList.add("checkout-success--active");
       cart = [];
       updateCartCount();
+      localStorage.removeItem("spaceBurgerCart");
 
       submitBtn.disabled = false;
       submitText.style.display = "inline";
@@ -387,8 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   });
 
-  // === 7. АНИМАЦИЯ ПОЯВЛЕНИЯ "О НАС" ===
-  const featureCards = document.querySelectorAll(".about__feature");
+  // Анимация появления "О нас"
   if (featureCards.length > 0) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -404,10 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
     featureCards.forEach((card) => observer.observe(card));
   }
 
-  // === 8. ФИЛЬТРАЦИЯ МЕНЮ ===
-  const filterBtns = document.querySelectorAll(".menu-filters__btn");
-  const menuCards = document.querySelectorAll(".menu-card");
-
+  // Фильтрация меню
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterBtns.forEach((b) =>
@@ -427,5 +484,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+  });
+  // === КНОПКА "НАВЕРХ" ===
+  const backToTopBtn = document.getElementById("backToTop");
+
+  // Показываем/скрываем кнопку при скролле
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 500) {
+      backToTopBtn.classList.add("back-to-top--visible");
+    } else {
+      backToTopBtn.classList.remove("back-to-top--visible");
+    }
+  });
+
+  // Плавный скролл наверх при клике
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+  // === КОСМИЧЕСКИЙ ПРЕЛОАДЕР ===
+  const preloader = document.getElementById("preloader");
+
+  // Ждем полной загрузки всех ресурсов (картинок, шрифтов, скриптов)
+  window.addEventListener("load", () => {
+    // Небольшая задержка (800мс), чтобы пользователь успел насладиться анимацией
+    // Иначе на быстрых соединениях прелоадер мелькнет слишком быстро
+    setTimeout(() => {
+      preloader.classList.add("preloader--hidden");
+    }, 800);
   });
 });

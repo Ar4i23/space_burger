@@ -46,6 +46,16 @@
     </script>
   </head>
   <body class="page">
+    <body class="page">
+  <!-- Космический прелоадер -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__content">
+      <div class="preloader__rocket"></div>
+      <p class="preloader__text">Заводим двигатели...</p>
+    </div>
+  </div>
+
+
     <!-- Космический фон -->
     <div class="space-bg" aria-hidden="true">
       <div class="space-bg__layer"></div>
@@ -715,7 +725,12 @@
         </div>
       </div>
     </div>
-
+    <!-- Контейнер для Toast-уведомлений -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    <!-- Кнопка "Наверх" -->
+    <button class="back-to-top" id="backToTop" aria-label="Вернуться наверх">
+      🚀
+    </button>
     <script src="js/script.js" defer></script>
   </body>
 </html>
