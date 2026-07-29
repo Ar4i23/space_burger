@@ -1,0 +1,111 @@
+// === ДАННЫЕ О ТОВАРАХ ===
+export const products = {
+  1: {
+    id: 1,
+    name: "Черная дыра",
+    price: 450,
+    image: "img/burger-blackhole-400.png",
+  },
+  2: {
+    id: 2,
+    name: "Сверхновая",
+    price: 520,
+    image: "img/burger-supernova-400.png",
+  },
+  3: {
+    id: 3,
+    name: "Млечный путь",
+    price: 390,
+    image: "img/burger-milkyway-400.png",
+  },
+  4: { id: 4, name: "Сатурн", price: 580, image: "img/burger-saturn-400.png" },
+  5: {
+    id: 5,
+    name: "Красный гигант",
+    price: 690,
+    image: "img/burger-redgiant-400.png",
+  },
+  6: {
+    id: 6,
+    name: "Туманность Ориона",
+    price: 490,
+    image: "img/burger-nebula-400.png",
+  },
+  7: { id: 7, name: "Фри (Мал.)", price: 150, image: "img/fries-small.webp" },
+  8: {
+    id: 8,
+    name: "По-деревенски (Мал.)",
+    price: 190,
+    image:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E%3C/text%3E%3C/svg%3E",
+  },
+  9: {
+    id: 9,
+    name: "Острый метеорит",
+    price: 210,
+    image: "img/spicy-fries.webp",
+  },
+  10: { id: 10, name: "Батат фри", price: 240, image: "img/sweet-potato.webp" },
+  11: {
+    id: 11,
+    name: "Фри (Бол.)",
+    price: 220,
+    image:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E%3C/text%3E%3C/svg%3E",
+  },
+  12: {
+    id: 12,
+    name: "По-деревенски (Бол.)",
+    price: 260,
+    image:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E🥔%3C/text%3E%3C/svg%3E",
+  },
+  13: {
+    id: 13,
+    name: "Чесночный соус",
+    price: 60,
+    image: "img/sauce-garlic.webp",
+  },
+  14: {
+    id: 14,
+    name: "Сырный соус",
+    price: 70,
+    image: "img/sauce-cheese.webp",
+  },
+  15: { id: 15, name: "Соус Искра", price: 80, image: "img/sauce-spicy.webp" },
+  16: { id: 16, name: "Кола 0.5л", price: 120, image: "img/drink-cola.webp" },
+  17: {
+    id: 17,
+    name: "Лимонад 0.4л",
+    price: 180,
+    image: "img/drink-lemonade.webp",
+  },
+  18: { id: 18, name: "Морс 0.4л", price: 160, image: "img/drink-morse.webp" },
+  19: { id: 19, name: "Чай 0.3л", price: 100, image: "img/drink-tea.webp" },
+  20: {
+    id: 20,
+    name: "Медово-горчичный",
+    price: 70,
+    image: "img/sauce-honey.webp",
+  },
+  21: { id: 21, name: "Кетчуп", price: 50, image: "img/sauce-ketchup.webp" },
+  22: {
+    id: 22,
+    name: "Американо 0.3л",
+    price: 170,
+    image: "img/drink-americano.webp",
+  },
+  23: {
+    id: 23,
+    name: "Молочный коктейль",
+    price: 200,
+    image: "img/drink-milkshake.webp",
+  },
+  24: { id: 24, name: "Вода 0.5л", price: 80, image: "img/drink-water.webp" },
+  25: {
+    id: 25,
+    name: "Апельсиновый сок",
+    price: 190,
+    image: "img/drink-orange.webp",
+  },
+};
