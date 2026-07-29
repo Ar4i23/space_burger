@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Соусы и гарниры — Space Burger</title>
+    <meta name="description" content="Соусы и гарниры Space Burger" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="page">
+    <div class="space-bg" aria-hidden="true">
+      <div class="space-bg__layer"></div>
+    </div>
+
+    <header class="header">
+      <div class="container header__container">
+        <a href="index.html" class="logo">
+          <span class="logo__icon">🍔</span>
+          <span class="logo__text"
+            >Space<span class="logo__text--accent">Burger</span></span
+          >
+        </a>
+        <nav class="nav header__nav" aria-label="Главная навигация">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="burgers.html" class="nav__link">Бургеры</a>
+            </li>
+            <li class="nav__item">
+              <a href="drinks.html" class="nav__link">Напитки</a>
+            </li>
+            <li class="nav__item">
+              <a href="sauces.html" class="nav__link nav__link--active"
+                >Соусы и гарниры</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="support.html" class="nav__link">Поддержка</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="btn-cart header__cart" aria-label="Открыть корзину">
+          <span class="btn-cart__icon"></span>
+          <span class="btn-cart__count">0</span>
+        </button>
+        <button
+          class="burger-btn header__burger"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="menu-page">
+        <div class="container menu-page__container">
+          <h1 class="menu-page__title">
+            <span class="menu-page__title--accent">Соусы и гарниры</span>
+          </h1>
+          <p class="menu-page__subtitle">Идеальное дополнение к полету</p>
+
+          <div class="menu-filters">
+            <button
+              class="menu-filters__btn menu-filters__btn--active"
+              data-filter="all"
+            >
+              <i class="fa-solid fa-utensils"></i> Все
+            </button>
+            <button class="menu-filters__btn" data-filter="sides">
+              <i class="fa-solid fa-french-fries"></i> Гарниры
+            </button>
+            <button class="menu-filters__btn" data-filter="sauces">
+              <i class="fa-solid fa-jar"></i> Соусы
+            </button>
+          </div>
+
+          <div class="menu__grid">
+            <!-- ГАРНИРЫ -->
+            <article class="menu-card" data-category="sides">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                🍟
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Метеоритный дождь</h3>
+                <p class="menu-card__desc">
+                  Хрустящий картофель фри с морской солью
+                </p>
+                <div class="menu-card__footer sputniki-card__sizes">
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="7"
+                    style="font-size: 12px; padding: 8px 12px"
+                  >
+                    Мал. 150₽
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="11"
+                    style="font-size: 12px; padding: 8px 12px"
+                  >
+                    Бол. 220₽
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="sides">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                🥔
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Гравитация</h3>
+                <p class="menu-card__desc">
+                  Картофель по-деревенски со специями
+                </p>
+                <div class="menu-card__footer sputniki-card__sizes">
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="8"
+                    style="font-size: 12px; padding: 8px 12px"
+                  >
+                    Мал. 190₽
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="12"
+                    style="font-size: 12px; padding: 8px 12px"
+                  >
+                    Бол. 260₽
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card menu-card--spicy" data-category="sides">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                🌶️
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Острый метеорит</h3>
+                <p class="menu-card__desc">
+                  Картошка фри с перцем чили и паприкой
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">210 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="9"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="sides">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                🍠
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Сладкий космос</h3>
+                <p class="menu-card__desc">
+                  Батат фри с медово-горчичным соусом
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">240 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="10"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- СОУСЫ -->
+            <article class="menu-card" data-category="sauces">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                <img
+                  src="img/sauce-garlic.webp"
+                  alt="Чесночный соус"
+                  class="sputniki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Тёмная энергия</h3>
+                <p class="menu-card__desc">Фирменный чесночный соус (40 мл)</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">60 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="13"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="sauces">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                <img
+                  src="img/sauce-cheese.webp"
+                  alt="Сырный соус"
+                  class="sputniki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Космический сыр</h3>
+                <p class="menu-card__desc">Нежный сырный соус (40 мл)</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">70 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="14"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card menu-card--spicy" data-category="sauces">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                <img
+                  src="img/sauce-spicy.webp"
+                  alt="Соус Искра"
+                  class="sputniki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Искра</h3>
+                <p class="menu-card__desc">Острый соус табаско (40 мл)</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">80 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="15"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="sauces">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                <img
+                  src="img/sauce-honey.webp"
+                  alt="Медово-горчичный соус"
+                  class="sputniki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Медовая орбита</h3>
+                <p class="menu-card__desc">Медово-горчичный соус (40 мл)</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">70 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="20"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="sauces">
+              <div class="menu-card__img-wrapper sputniki-card__img-wrapper">
+                <img
+                  src="img/sauce-ketchup.webp"
+                  alt="Кетчуп"
+                  class="sputniki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Красный карлик</h3>
+                <p class="menu-card__desc">
+                  Домашний кетчуп из томатов (40 мл)
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">50 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="21"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="footer__col">
+          <a href="index.html" class="logo">
+            <span class="logo__icon">🍔</span>
+            <span class="logo__text"
+              >Space<span class="logo__text--accent">Burger</span></span
+            >
+          </a>
+          <p class="footer__desc">Работаем на всей орбите Земли с 2024 года.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Контакты</h4>
+          <address class="footer__address">
+            <p>г. Москва, ул. Галактическая, 42</p>
+            <a href="tel:+79991234567" class="footer__link"
+              >+7 (999) 123-45-67</a
+            >
+            <a href="mailto:hello@spaceburger.ru" class="footer__link"
+              >hello@spaceburger.ru</a
+            >
+          </address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Соцсети</h4>
+          <div class="socials">
+            <a
+              href="https://vk.com/spaceburger"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="VK"
+              ><i class="fa-brands fa-vk"></i
+            ></a>
+            <a
+              href="https://instagram.com/spaceburger"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 Space Burger. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal" aria-hidden="true">
+      <div class="cart-modal__overlay"></div>
+      <div class="cart-modal__content">
+        <button class="cart-modal__close" aria-label="Закрыть">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="cart-modal__title">Твоя корзина</h2>
+        <div class="cart-modal__items" id="cartItems"></div>
+        <div class="cart-modal__footer" id="cartFooter" style="display: none">
+          <div class="cart-modal__total">
+            <span class="cart-modal__total-label">Итого:</span>
+            <span class="cart-modal__total-price" id="cartTotal">0 ₽</span>
+          </div>
+          <div class="cart-modal__actions">
+            <button class="btn btn--danger cart-modal__clear" id="clearCartBtn">
+              <i class="fa-solid fa-trash"></i> Очистить
+            </button>
+            <button class="btn btn--primary cart-modal__checkout">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    <!-- Модальное окно подтверждения очистки -->
+    <div class="confirm-modal" id="confirmModal" aria-hidden="true">
+      <div class="confirm-modal__overlay"></div>
+      <div class="confirm-modal__content">
+        <div class="confirm-modal__icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="confirm-modal__title">Очистить корзину?</h3>
+        <p class="confirm-modal__text">
+          Все товары будут удалены. Это действие нельзя отменить.
+        </p>
+        <div class="confirm-modal__actions">
+          <button
+            class="btn btn--secondary confirm-modal__cancel"
+            id="confirmCancelBtn"
+          >
+            Отмена
+          </button>
+          <button
+            class="btn btn--danger confirm-modal__confirm"
+            id="confirmOkBtn"
+          >
+            <i class="fa-solid fa-trash"></i> Очистить
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/sauces-page.js"></script>
+  </body>
+</html>

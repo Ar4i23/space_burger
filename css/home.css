@@ -1,0 +1,200 @@
+/* === ГЛАВНАЯ СТРАНИЦА === */
+
+/* Hero кнопки */
+.hero__actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero__btn i {
+  margin-right: 8px;
+}
+
+/* === ПРЕВЬЮ КАТЕГОРИЙ === */
+.home-categories {
+  padding: 100px 0;
+  position: relative;
+}
+
+.home-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.category-card {
+  position: relative;
+  background: rgba(25, 25, 45, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(10px);
+}
+
+.category-card__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  opacity: 0.08;
+  transition: var(--transition);
+  z-index: 0;
+}
+
+.category-card:hover .category-card__bg {
+  opacity: 0.15;
+  transform: scale(1.1);
+}
+
+.category-card__content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.category-card__icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(184, 41, 255, 0.4);
+  transition: var(--transition);
+}
+
+.category-card:hover .category-card__icon {
+  transform: translateY(-5px) rotate(-5deg);
+  box-shadow: 0 10px 30px rgba(184, 41, 255, 0.6);
+}
+
+.category-card__title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.category-card__desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.category-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--neon-blue);
+  transition: var(--transition);
+}
+
+.category-card__link i {
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card__link {
+  color: var(--neon-purple);
+}
+
+.category-card:hover .category-card__link i {
+  transform: translateX(5px);
+}
+
+/* Цветовые акценты для карточек */
+.category-card--burgers {
+  border-color: rgba(255, 107, 0, 0.3);
+}
+.category-card--burgers:hover {
+  border-color: var(--neon-orange);
+  box-shadow: 0 10px 40px rgba(255, 107, 0, 0.2);
+}
+.category-card--burgers .category-card__icon {
+  background: linear-gradient(135deg, var(--neon-orange), #ff9500);
+}
+
+.category-card--drinks {
+  border-color: rgba(255, 105, 180, 0.3);
+}
+.category-card--drinks:hover {
+  border-color: #ff69b4;
+  box-shadow: 0 10px 40px rgba(255, 105, 180, 0.2);
+}
+.category-card--drinks .category-card__icon {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+}
+
+.category-card--sauces {
+  border-color: rgba(184, 41, 255, 0.3);
+}
+.category-card--sauces:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 0 10px 40px rgba(184, 41, 255, 0.2);
+}
+.category-card--sauces .category-card__icon {
+  background: linear-gradient(135deg, var(--neon-purple), #9b30ff);
+}
+
+/* Отступы для иконок в кнопках */
+.cart-modal__clear i,
+.confirm-modal__confirm i,
+.cart-modal__checkout i,
+.delivery__map-link i {
+  margin-right: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .home-categories {
+    padding: 60px 0;
+  }
+
+  .home-categories__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .category-card__content {
+    padding: 30px 24px;
+  }
+
+  .category-card__title {
+    font-size: 24px;
+  }
+
+  .category-card__bg {
+    font-size: 120px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

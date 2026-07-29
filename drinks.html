@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Напитки — Space Burger</title>
+    <meta name="description" content="Освежающие напитки Space Burger" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="page">
+    <div class="space-bg" aria-hidden="true">
+      <div class="space-bg__layer"></div>
+    </div>
+
+    <header class="header">
+      <div class="container header__container">
+        <a href="index.html" class="logo">
+          <span class="logo__icon">🍔</span>
+          <span class="logo__text"
+            >Space<span class="logo__text--accent">Burger</span></span
+          >
+        </a>
+        <nav class="nav header__nav" aria-label="Главная навигация">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="burgers.html" class="nav__link">Бургеры</a>
+            </li>
+            <li class="nav__item">
+              <a href="drinks.html" class="nav__link nav__link--active"
+                >Напитки</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="sauces.html" class="nav__link">Соусы и гарниры</a>
+            </li>
+            <li class="nav__item">
+              <a href="support.html" class="nav__link">Поддержка</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="btn-cart header__cart" aria-label="Открыть корзину">
+          <span class="btn-cart__icon"></span>
+          <span class="btn-cart__count">0</span>
+        </button>
+        <button
+          class="burger-btn header__burger"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+          <span class="burger-btn__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="menu-page">
+        <div class="container menu-page__container">
+          <h1 class="menu-page__title">
+            <span class="menu-page__title--accent">Напитки</span>
+          </h1>
+          <p class="menu-page__subtitle">
+            Топливо для космического путешествия
+          </p>
+
+          <div class="menu-filters">
+            <button
+              class="menu-filters__btn menu-filters__btn--active"
+              data-filter="all"
+            >
+              <i class="fa-solid fa-glass-water"></i> Все
+            </button>
+            <button class="menu-filters__btn" data-filter="cold">
+              <i class="fa-solid fa-snowflake"></i> Холодные
+            </button>
+            <button class="menu-filters__btn" data-filter="hot">
+              <i class="fa-solid fa-mug-hot"></i> Горячие
+            </button>
+          </div>
+
+          <div class="menu__grid">
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-cola.webp"
+                  alt="Кола"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Черная материя</h3>
+                <p class="menu-card__desc">
+                  Ледяная кола 0.5л с долькой лимона
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">120 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="16"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-lemonade.webp"
+                  alt="Лимонад"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Космический лимонад</h3>
+                <p class="menu-card__desc">
+                  Домашний лимонад с мятой и имбирем 0.4л
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">180 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="17"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-morse.webp"
+                  alt="Морс"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Звёздная пыль</h3>
+                <p class="menu-card__desc">Клюквенный морс с малиной 0.4л</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">160 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="18"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-water.webp"
+                  alt="Вода"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Чистая орбита</h3>
+                <p class="menu-card__desc">Минеральная вода без газа 0.5л</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">80 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="24"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-orange.webp"
+                  alt="Сок"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Солнечный всплеск</h3>
+                <p class="menu-card__desc">
+                  Свежевыжатый апельсиновый сок 0.3л
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">190 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="25"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="cold">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-milkshake.webp"
+                  alt="Коктейль"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Млечный путь</h3>
+                <p class="menu-card__desc">Ванильный молочный коктейль 0.4л</p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">200 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="23"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="hot">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-tea.webp"
+                  alt="Чай"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Гравитационный чай</h3>
+                <p class="menu-card__desc">
+                  Чёрный чай с бергамотом и чабрецом 0.3л
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">140 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="19"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="hot">
+              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+                <img
+                  src="img/drink-americano.webp"
+                  alt="Кофе"
+                  class="napitki-card__img"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Тёмная звезда</h3>
+                <p class="menu-card__desc">
+                  Американо на зёрнах из Эфиопии 0.3л
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">170 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="22"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="footer__col">
+          <a href="index.html" class="logo">
+            <span class="logo__icon"></span>
+            <span class="logo__text"
+              >Space<span class="logo__text--accent">Burger</span></span
+            >
+          </a>
+          <p class="footer__desc">Работаем на всей орбите Земли с 2024 года.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Контакты</h4>
+          <address class="footer__address">
+            <p>г. Москва, ул. Галактическая, 42</p>
+            <a href="tel:+79991234567" class="footer__link"
+              >+7 (999) 123-45-67</a
+            >
+            <a href="mailto:hello@spaceburger.ru" class="footer__link"
+              >hello@spaceburger.ru</a
+            >
+          </address>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Соцсети</h4>
+          <div class="socials">
+            <a
+              href="https://vk.com/spaceburger"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="VK"
+              ><i class="fa-brands fa-vk"></i
+            ></a>
+            <a
+              href="https://instagram.com/spaceburger"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 Space Burger. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal" aria-hidden="true">
+      <div class="cart-modal__overlay"></div>
+      <div class="cart-modal__content">
+        <button class="cart-modal__close" aria-label="Закрыть">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="cart-modal__title">Твоя корзина</h2>
+        <div class="cart-modal__items" id="cartItems"></div>
+        <div class="cart-modal__footer" id="cartFooter" style="display: none">
+          <div class="cart-modal__total">
+            <span class="cart-modal__total-label">Итого:</span>
+            <span class="cart-modal__total-price" id="cartTotal">0 ₽</span>
+          </div>
+          <div class="cart-modal__actions">
+            <button class="btn btn--danger cart-modal__clear" id="clearCartBtn">
+              <i class="fa-solid fa-trash"></i> Очистить
+            </button>
+            <button class="btn btn--primary cart-modal__checkout">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    <!-- Модальное окно подтверждения очистки -->
+    <div class="confirm-modal" id="confirmModal" aria-hidden="true">
+      <div class="confirm-modal__overlay"></div>
+      <div class="confirm-modal__content">
+        <div class="confirm-modal__icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="confirm-modal__title">Очистить корзину?</h3>
+        <p class="confirm-modal__text">
+          Все товары будут удалены. Это действие нельзя отменить.
+        </p>
+        <div class="confirm-modal__actions">
+          <button
+            class="btn btn--secondary confirm-modal__cancel"
+            id="confirmCancelBtn"
+          >
+            Отмена
+          </button>
+          <button
+            class="btn btn--danger confirm-modal__confirm"
+            id="confirmOkBtn"
+          >
+            <i class="fa-solid fa-trash"></i> Очистить
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/drinks-page.js"></script>
+  </body>
+</html>

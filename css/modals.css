@@ -493,3 +493,12 @@
   caret-color: #ffffff !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
+/* Отступ для иконок в кнопках */
+.cart-modal__clear i,
+.confirm-modal__confirm i {
+  margin-right: 8px;
+}
+
+.cart-modal__checkout i {
+  margin-right: 8px;
+}
