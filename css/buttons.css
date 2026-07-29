@@ -1,0 +1,49 @@
+/* === КНОПКИ === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+  color: #fff;
+  box-shadow: 0 0 20px rgba(184, 41, 255, 0.4);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(184, 41, 255, 0.7);
+}
+
+.btn--secondary {
+  background: transparent;
+  border: 2px solid var(--neon-blue);
+  color: var(--neon-blue);
+}
+
+.btn--secondary:hover {
+  background: var(--neon-blue);
+  color: var(--bg-space);
+}
+
+.btn--danger {
+  background: transparent;
+  border: 2px solid #ff4444;
+  color: #ff4444;
+  transition: var(--transition);
+}
+
+.btn--danger:hover {
+  background: #ff4444;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+  transform: translateY(-2px);
+}

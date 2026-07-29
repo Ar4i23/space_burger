@@ -1,0 +1,165 @@
+/* === TOAST УВЕДОМЛЕНИЯ === */
+.toast-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  background: rgba(20, 20, 35, 0.95);
+  border: 1px solid var(--neon-blue);
+  border-radius: 12px;
+  padding: 16px 24px;
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 280px;
+  transform: translateX(120%);
+  opacity: 0;
+  animation: toastSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.toast--hide {
+  animation: toastSlideOut 0.3s ease-in forwards;
+}
+.toast__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+/* === КНОПКА "НАВЕРХ" === */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(20, 20, 35, 0.9);
+  border: 2px solid var(--neon-blue);
+  border-radius: 50%;
+  color: var(--neon-blue);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--neon-blue);
+  color: var(--bg-space);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
+  transform: translateY(-5px);
+}
+
+/* === ПРЕЛОАДЕР === */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050510;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+.preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preloader__content {
+  text-align: center;
+}
+
+.preloader__rocket {
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: rocketLaunch 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes rocketLaunch {
+  0% {
+    transform: translateY(15px) rotate(-45deg);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+  }
+  100% {
+    transform: translateY(-15px) rotate(-45deg);
+    text-shadow:
+      0 0 25px rgba(0, 243, 255, 0.8),
+      0 0 50px rgba(184, 41, 255, 0.6);
+  }
+}
+
+.preloader__text {
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    color: var(--neon-blue);
+    transform: scale(1);
+  }
+}

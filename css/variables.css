@@ -1,0 +1,12 @@
+/* === ПЕРЕМЕННЫЕ === */
+:root {
+  --bg-space: #070714;
+  --bg-card: rgba(25, 25, 45, 0.6);
+  --neon-purple: #b829ff;
+  --neon-blue: #00f3ff;
+  --neon-orange: #ff6b00;
+  --text-main: #ffffff;
+  --text-muted: #a0a0b8;
+  --radius: 16px;
+  --transition: 0.3s ease;
+}
