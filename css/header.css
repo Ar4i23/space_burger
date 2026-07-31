@@ -44,6 +44,11 @@
   font-weight: 500;
   transition: var(--transition);
 }
+.nav__link--active {
+  color: var(--neon-blue);
+  text-shadow: 0 0 8px var(--neon-blue);
+  border-bottom: 2px solid var(--neon-blue);
+}
 
 .nav__link:hover {
   color: var(--neon-blue);
@@ -83,6 +88,39 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+.btn-cart {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cart__icon {
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.btn-cart__count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: var(--neon-orange);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .burger-btn__line {

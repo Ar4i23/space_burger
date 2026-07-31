@@ -36,8 +36,7 @@ export const products = {
     id: 8,
     name: "По-деревенски (Мал.)",
     price: 190,
-    image:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E%3C/text%3E%3C/svg%3E",
+    image: "img/rustic_potatoes.webp",
   },
   9: {
     id: 9,
@@ -50,15 +49,13 @@ export const products = {
     id: 11,
     name: "Фри (Бол.)",
     price: 220,
-    image:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E%3C/text%3E%3C/svg%3E",
+    image: "img/fries-small.webp",
   },
   12: {
     id: 12,
     name: "По-деревенски (Бол.)",
     price: 260,
-    image:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.3em'%3E🥔%3C/text%3E%3C/svg%3E",
+    image: "img/rustic_potatoes.webp",
   },
   13: {
     id: 13,

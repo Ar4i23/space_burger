@@ -1,6 +1,5 @@
 import { products } from "./data.js";
 import {
-  cart,
   loadCart,
   updateCartCount,
   addToCart,
@@ -45,9 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToTopBtn = document.getElementById("backToTop");
   const preloader = document.getElementById("preloader");
 
+  // === ОБРАБОТЧИКИ КНОПОК ДОБАВЛЕНИЯ ===
+  document.querySelectorAll(".menu-card__btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      addToCart(parseInt(btn.dataset.id), showToast, cartIcon),
+    );
+  });
+
   // === ЗАГРУЗКА КОРЗИНЫ ===
-  const savedCart = loadCart();
-  cart.push(...savedCart);
+  loadCart();
   updateCartCount(cartCount);
 
   // === КОРЗИНА ===

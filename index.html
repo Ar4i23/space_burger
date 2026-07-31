@@ -81,73 +81,111 @@
           </p>
           <div class="hero__actions">
             <a href="burgers.html" class="btn btn--primary hero__btn">
-              <i class="fa-solid fa-burger"></i> Смотреть меню
+              <i class="fa-solid fa-rocket"></i> Заказать сейчас
             </a>
-            <a href="#about" class="btn btn--secondary hero__btn">
-              <i class="fa-solid fa-circle-info"></i> О нас
+            <a href="#hits" class="btn btn--secondary hero__btn">
+              <i class="fa-solid fa-fire-flame-curved"></i> Наши хиты
             </a>
           </div>
         </div>
       </section>
 
-      <!-- ПРЕВЬЮ КАТЕГОРИЙ МЕНЮ -->
-      <section class="home-categories" id="categories">
+      <!-- ХИТЫ ПРОДАЖ -->
+      <section class="home-hits" id="hits">
         <div class="container">
           <h2 class="section-title">
-            Наше <span class="section-title__accent">Меню</span>
+            <span class="section-title__accent">Хиты</span> продаж
           </h2>
           <p class="section-desc">
-            Выбери категорию и отправляйся в гастрономическое путешествие
+            Самые популярные бургеры среди наших космонавтов
           </p>
 
-          <div class="home-categories__grid">
-            <!-- Бургеры -->
-            <a href="burgers.html" class="category-card category-card--burgers">
-              <div class="category-card__bg">🍔</div>
-              <div class="category-card__content">
-                <div class="category-card__icon">
-                  <i class="fa-solid fa-burger"></i>
-                </div>
-                <h3 class="category-card__title">Бургеры</h3>
-                <p class="category-card__desc">
-                  6 уникальных рецептов + конструктор
+          <div class="menu__grid">
+            <article class="menu-card" data-category="all">
+              <img
+                src="img/burger-blackhole-800.png"
+                alt="Черная дыра"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Черная дыра</h3>
+                <p class="menu-card__desc">
+                  Двойная мясная вселенная, черная булочка, соус «Темная
+                  материя» и сыр чеддер.
                 </p>
-                <span class="category-card__link">
-                  Смотреть <i class="fa-solid fa-arrow-right"></i>
-                </span>
-              </div>
-            </a>
-
-            <!-- Напитки -->
-            <a href="drinks.html" class="category-card category-card--drinks">
-              <div class="category-card__bg">🥤</div>
-              <div class="category-card__content">
-                <div class="category-card__icon">
-                  <i class="fa-solid fa-glass-water"></i>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">450 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="1"
+                  >
+                    В корзину
+                  </button>
                 </div>
-                <h3 class="category-card__title">Напитки</h3>
-                <p class="category-card__desc">8 освежающих напитков</p>
-                <span class="category-card__link">
-                  Смотреть <i class="fa-solid fa-arrow-right"></i>
-                </span>
               </div>
-            </a>
+            </article>
 
-            <!-- Соусы и гарниры -->
-            <a href="sauces.html" class="category-card category-card--sauces">
-              <div class="category-card__bg">🍟</div>
-              <div class="category-card__content">
-                <div class="category-card__icon">
-                  <i class="fa-solid fa-utensils"></i>
-                </div>
-                <h3 class="category-card__title">Соусы и гарниры</h3>
-                <p class="category-card__desc">
-                  9 позиций для идеального дополнения
+            <article class="menu-card menu-card--spicy" data-category="spicy">
+              <img
+                src="img/burger-supernova-800.png"
+                alt="Сверхновая"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Сверхновая 🌶️</h3>
+                <p class="menu-card__desc">
+                  Взрывной вкус! Мраморная говядина, халапеньо, перечный джек и
+                  соус «Искра».
                 </p>
-                <span class="category-card__link">
-                  Смотреть <i class="fa-solid fa-arrow-right"></i>
-                </span>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">520 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="2"
+                  >
+                    В корзину
+                  </button>
+                </div>
               </div>
+            </article>
+
+            <article
+              class="menu-card menu-card--premium"
+              data-category="premium"
+            >
+              <img
+                src="img/burger-saturn-800.png"
+                alt="Сатурн"
+                class="menu-card__img"
+                loading="lazy"
+              />
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Сатурн 🪐</h3>
+                <p class="menu-card__desc">
+                  Три луковых кольца вокруг котлеты, бекон, сыр гауда и соус
+                  «Кольца планет».
+                </p>
+                <div class="menu-card__footer">
+                  <span class="menu-card__price">580 ₽</span>
+                  <button
+                    type="button"
+                    class="btn btn--secondary menu-card__btn"
+                    data-id="4"
+                  >
+                    В корзину
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="home-hits__cta">
+            <a href="burgers.html" class="btn btn--primary">
+              <i class="fa-solid fa-burger"></i> Смотреть всё меню
             </a>
           </div>
         </div>

@@ -1,9 +1,14 @@
+// === ДАННЫЕ О ТОВАРАХ ===
 import { products } from "./data.js";
 
 // === СОСТОЯНИЕ КОРЗИНЫ ===
-export let cart = [];
+let cart = [];
 
 // === ФУНКЦИИ КОРЗИНЫ ===
+export function getCart() {
+  return cart;
+}
+
 export function updateCartCount(cartCount) {
   if (cartCount)
     cartCount.textContent = cart.reduce((s, i) => s + i.quantity, 0);
@@ -28,23 +33,29 @@ export function loadCart() {
 }
 
 export function addToCart(productId, showToast, cartIcon) {
-  const e = cart.find((i) => i.id === productId);
-  if (e) e.quantity++;
-  else cart.push({ id: productId, quantity: 1 });
+  const existing = cart.find((i) => i.id === productId);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
 
   updateCartCount(document.querySelector(".btn-cart__count"));
   saveCart();
-  showToast(`${products[productId].name} добавлен!`);
 
-  cartIcon.style.transform = "scale(1.3)";
-  setTimeout(() => {
-    cartIcon.style.transform = "scale(1)";
-  }, 200);
+  if (showToast) showToast(`${products[productId].name} добавлен!`);
+
+  if (cartIcon) {
+    cartIcon.style.transform = "scale(1.3)";
+    setTimeout(() => {
+      cartIcon.style.transform = "scale(1)";
+    }, 200);
+  }
 }
 
 export function renderCart(cartItemsContainer, cartFooter, cartTotal) {
   if (!cart.length) {
-    cartItemsContainer.innerHTML = `<div class="cart-modal__empty"><span class="cart-modal__empty-icon">🛒</span><p>Корзина пуста</p><p class="cart-modal__empty-text">Добавь что-нибудь вкусное!</p></div>`;
+    cartItemsContainer.innerHTML = `<div class="cart-modal__empty"><i class="fa-solid fa-cart-shopping cart-modal__empty-icon"></i><p>Корзина пуста</p><p class="cart-modal__empty-text">Добавь что-нибудь вкусное!</p></div>`;
     cartFooter.style.display = "none";
     return;
   }
@@ -53,9 +64,10 @@ export function renderCart(cartItemsContainer, cartFooter, cartTotal) {
     total = 0;
   cart.forEach((i) => {
     const p = products[i.id];
+    if (!p) return;
     const t = p.price * i.quantity;
     total += t;
-    html += `<div class="cart-item"><img src="${p.image}" alt="${p.name}" class="cart-item__img"><div class="cart-item__info"><h3 class="cart-item__title">${p.name}</h3><span class="cart-item__price">${t} ₽</span></div><div class="cart-item__controls"><div class="cart-item__quantity"><button class="cart-item__btn cart-item__decrease" data-id="${i.id}">−</button><span class="cart-item__count">${i.quantity}</span><button class="cart-item__btn cart-item__increase" data-id="${i.id}">+</button></div><button class="cart-item__remove" data-id="${i.id}" aria-label="Удалить">🗑</button></div></div>`;
+    html += `<div class="cart-item"><img src="${p.image}" alt="${p.name}" class="cart-item__img"><div class="cart-item__info"><h3 class="cart-item__title">${p.name}</h3><span class="cart-item__price">${t} ₽</span></div><div class="cart-item__controls"><div class="cart-item__quantity"><button class="cart-item__btn cart-item__decrease" data-id="${i.id}">−</button><span class="cart-item__count">${i.quantity}</span><button class="cart-item__btn cart-item__increase" data-id="${i.id}">+</button></div><button class="cart-item__remove" data-id="${i.id}" aria-label="Удалить"><i class="fa-solid fa-trash"></i></button></div></div>`;
   });
 
   cartItemsContainer.innerHTML = html;

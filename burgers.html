@@ -26,28 +26,29 @@
             >Space<span class="logo__text--accent">Burger</span></span
           >
         </a>
-        <nav class="nav header__nav" aria-label="Главная навигация">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="burgers.html" class="nav__link nav__link--active"
-                >Бургеры</a
-              >
-            </li>
-            <li class="nav__item">
-              <a href="drinks.html" class="nav__link">Напитки</a>
-            </li>
-            <li class="nav__item">
-              <a href="sauces.html" class="nav__link">Соусы и гарниры</a>
-            </li>
-            <li class="nav__item">
-              <a href="support.html" class="nav__link">Поддержка</a>
-            </li>
-          </ul>
-        </nav>
-<button class="btn-cart header__cart" aria-label="Открыть корзину">
-  <span class="btn-cart__icon"></span>
-  <span class="btn-cart__count">0</span>
-</button>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="index.html" class="nav__link">Главная</a>
+          </li>
+          <li class="nav__item">
+            <a href="burgers.html" class="nav__link nav__link--active"
+              >Бургеры</a
+            >
+          </li>
+          <li class="nav__item">
+            <a href="drinks.html" class="nav__link">Напитки</a>
+          </li>
+          <li class="nav__item">
+            <a href="sauces.html" class="nav__link">Соусы и гарниры</a>
+          </li>
+          <li class="nav__item">
+            <a href="support.html" class="nav__link">Поддержка</a>
+          </li>
+        </ul>
+        <button class="btn-cart header__cart" aria-label="Открыть корзину">
+          <span class="btn-cart__icon">🛒</span>
+          <span class="btn-cart__count">0</span>
+        </button>
         <button
           class="burger-btn header__burger"
           aria-label="Открыть меню"
@@ -534,8 +535,6 @@
             >
               <i class="fa-brands fa-instagram"></i>
             </a>
-
-            </a>
           </div>
         </div>
       </div>
@@ -578,20 +577,32 @@
 
     <div id="toast-container" class="toast-container" aria-live="polite"></div>
     <!-- Модальное окно подтверждения очистки -->
-<div class="confirm-modal" id="confirmModal" aria-hidden="true">
-  <div class="confirm-modal__overlay"></div>
-  <div class="confirm-modal__content">
-    <div class="confirm-modal__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-    <h3 class="confirm-modal__title">Очистить корзину?</h3>
-    <p class="confirm-modal__text">Все товары будут удалены. Это действие нельзя отменить.</p>
-    <div class="confirm-modal__actions">
-      <button class="btn btn--secondary confirm-modal__cancel" id="confirmCancelBtn">Отмена</button>
-      <button class="btn btn--danger confirm-modal__confirm" id="confirmOkBtn">
-        <i class="fa-solid fa-trash"></i> Очистить
-      </button>
+    <div class="confirm-modal" id="confirmModal" aria-hidden="true">
+      <div class="confirm-modal__overlay"></div>
+      <div class="confirm-modal__content">
+        <div class="confirm-modal__icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="confirm-modal__title">Очистить корзину?</h3>
+        <p class="confirm-modal__text">
+          Все товары будут удалены. Это действие нельзя отменить.
+        </p>
+        <div class="confirm-modal__actions">
+          <button
+            class="btn btn--secondary confirm-modal__cancel"
+            id="confirmCancelBtn"
+          >
+            Отмена
+          </button>
+          <button
+            class="btn btn--danger confirm-modal__confirm"
+            id="confirmOkBtn"
+          >
+            <i class="fa-solid fa-trash"></i> Очистить
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <script type="module" src="js/burgers-page.js"></script>
   </body>

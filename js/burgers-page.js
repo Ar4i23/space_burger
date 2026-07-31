@@ -1,6 +1,5 @@
 import { products } from "./data.js";
 import {
-  cart,
   loadCart,
   updateCartCount,
   addToCart,
@@ -21,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.querySelector(".cart-modal__close");
   const overlay = document.querySelector(".cart-modal__overlay");
   const clearCartBtn = document.getElementById("clearCartBtn");
+  const confirmModal = document.getElementById("confirmModal");
+  const confirmCancelBtn = document.getElementById("confirmCancelBtn");
+  const confirmOkBtn = document.getElementById("confirmOkBtn");
+  const confirmOverlay = document.querySelector(".confirm-modal__overlay");
   const burgerBtn = document.querySelector(".burger-btn");
   const nav = document.querySelector(".nav");
   const navLinks = document.querySelectorAll(".nav__link");
@@ -28,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuCards = document.querySelectorAll(".menu-card");
 
   // === ЗАГРУЗКА КОРЗИНЫ ===
-  const savedCart = loadCart();
-  cart.push(...savedCart);
+  loadCart();
   updateCartCount(cartCount);
 
   // === ОБРАБОТЧИКИ КНОПОК ДОБАВЛЕНИЯ ===
@@ -48,13 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.addEventListener("click", () => closeCart(cartModal));
 
   // === ОЧИСТКА КОРЗИНЫ ===
-  const confirmModal = document.getElementById("confirmModal");
-  const confirmCancelBtn = document.getElementById("confirmCancelBtn");
-  const confirmOkBtn = document.getElementById("confirmOkBtn");
-  const confirmOverlay = document.querySelector(".confirm-modal__overlay");
-
   clearCartBtn.addEventListener("click", () => {
-    if (cart.length > 0) {
+    const currentCart = JSON.parse(
+      localStorage.getItem("spaceBurgerCart") || "[]",
+    );
+    if (currentCart.length > 0) {
       confirmModal.classList.add("confirm-modal--active");
       document.body.style.overflow = "hidden";
     }
@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === КЛАВИША ESCAPE ===
   document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      cartModal.classList.contains("cart-modal--active")
-    ) {
-      closeCart(cartModal);
+    if (e.key === "Escape") {
+      if (confirmModal.classList.contains("confirm-modal--active")) {
+        confirmModal.classList.remove("confirm-modal--active");
+        document.body.style.overflow = "";
+      } else if (cartModal.classList.contains("cart-modal--active")) {
+        closeCart(cartModal);
+      }
     }
   });
 
@@ -95,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       burgerBtn.setAttribute("aria-expanded", isActive);
       burgerBtn.classList.toggle("burger-btn--active");
     });
-
     navLinks.forEach((l) =>
       l.addEventListener("click", () => {
         nav.classList.remove("nav--active");

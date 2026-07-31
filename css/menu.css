@@ -57,6 +57,7 @@
 .menu-filters__btn--active {
   background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
   border-color: transparent;
+  border: none;
   color: #fff;
   box-shadow: 0 5px 25px rgba(184, 41, 255, 0.4);
 }

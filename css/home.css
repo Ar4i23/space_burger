@@ -1,5 +1,13 @@
 /* === ГЛАВНАЯ СТРАНИЦА === */
+/* Плавный скролл к якорям */
+html {
+  scroll-behavior: smooth;
+}
 
+/* Отступ для якорных ссылок (чтобы шапка не перекрывала контент) */
+#hits {
+  scroll-margin-top: 100px;
+}
 /* Hero кнопки */
 .hero__actions {
   display: flex;
@@ -164,6 +172,20 @@
 .delivery__map-link i {
   margin-right: 8px;
 }
+/* === ХИТЫ ПРОДАЖ === */
+.home-hits {
+  padding: 100px 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.home-hits__cta {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-hits__cta .btn i {
+  margin-right: 8px;
+}
 
 /* Адаптивность */
 @media (max-width: 768px) {
@@ -174,6 +196,9 @@
   .home-categories__grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  .home-hits {
+    padding: 60px 0;
   }
 
   .category-card__content {

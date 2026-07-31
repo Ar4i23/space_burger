@@ -1,6 +1,5 @@
 import { products } from "./data.js";
 import {
-  cart,
   loadCart,
   updateCartCount,
   addToCart,
@@ -10,6 +9,7 @@ import {
 import { showToast, openCart, closeCart } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // === ЭЛЕМЕНТЫ DOM ===
   const cartModal = document.getElementById("cartModal");
   const cartItemsContainer = document.getElementById("cartItems");
   const cartFooter = document.getElementById("cartFooter");
@@ -19,28 +19,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.querySelector(".cart-modal__close");
   const overlay = document.querySelector(".cart-modal__overlay");
   const clearCartBtn = document.getElementById("clearCartBtn");
+  const confirmModal = document.getElementById("confirmModal");
+  const confirmCancelBtn = document.getElementById("confirmCancelBtn");
+  const confirmOkBtn = document.getElementById("confirmOkBtn");
+  const confirmOverlay = document.querySelector(".confirm-modal__overlay");
   const burgerBtn = document.querySelector(".burger-btn");
   const nav = document.querySelector(".nav");
   const navLinks = document.querySelectorAll(".nav__link");
   const filterBtns = document.querySelectorAll(".menu-filters__btn");
   const menuCards = document.querySelectorAll(".menu-card");
 
-  const savedCart = loadCart();
-  cart.push(...savedCart);
+  // === ЗАГРУЗКА КОРЗИНЫ ===
+  loadCart();
   updateCartCount(cartCount);
 
+  // === ОБРАБОТЧИКИ КНОПОК ДОБАВЛЕНИЯ ===
   document.querySelectorAll(".menu-card__btn").forEach((btn) => {
     btn.addEventListener("click", () =>
       addToCart(parseInt(btn.dataset.id), showToast, cartIcon),
     );
   });
 
-  cartIcon.addEventListener("click", () => {
-    openCart(cartModal);
-    renderCart(cartItemsContainer, cartFooter, cartTotal);
-  });
-  closeBtn.addEventListener("click", () => closeCart(cartModal));
-  overlay.addEventListener("click", () => closeCart(cartModal));
   // === КОРЗИНА ===
   cartIcon.addEventListener("click", () => {
     openCart(cartModal);
@@ -50,13 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.addEventListener("click", () => closeCart(cartModal));
 
   // === ОЧИСТКА КОРЗИНЫ ===
-  const confirmModal = document.getElementById("confirmModal");
-  const confirmCancelBtn = document.getElementById("confirmCancelBtn");
-  const confirmOkBtn = document.getElementById("confirmOkBtn");
-  const confirmOverlay = document.querySelector(".confirm-modal__overlay");
-
   clearCartBtn.addEventListener("click", () => {
-    if (cart.length > 0) {
+    const currentCart = JSON.parse(
+      localStorage.getItem("spaceBurgerCart") || "[]",
+    );
+    if (currentCart.length > 0) {
       confirmModal.classList.add("confirm-modal--active");
       document.body.style.overflow = "hidden";
     }
@@ -77,17 +74,22 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart(cartItemsContainer, cartFooter, cartTotal);
     confirmModal.classList.remove("confirm-modal--active");
     document.body.style.overflow = "";
-    showToast("Корзина очищена", "🗑️");
+    showToast("Корзина очищена", "️");
   });
 
+  // === КЛАВИША ESCAPE ===
   document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      cartModal.classList.contains("cart-modal--active")
-    )
-      closeCart(cartModal);
+    if (e.key === "Escape") {
+      if (confirmModal.classList.contains("confirm-modal--active")) {
+        confirmModal.classList.remove("confirm-modal--active");
+        document.body.style.overflow = "";
+      } else if (cartModal.classList.contains("cart-modal--active")) {
+        closeCart(cartModal);
+      }
+    }
   });
 
+  // === МОБИЛЬНОЕ МЕНЮ ===
   if (burgerBtn) {
     burgerBtn.addEventListener("click", () => {
       const isActive = nav.classList.toggle("nav--active");
@@ -103,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // === ФИЛЬТРЫ ===
   filterBtns.forEach((b) =>
     b.addEventListener("click", () => {
       filterBtns.forEach((x) =>
