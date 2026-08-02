@@ -1,6 +1,5 @@
 // === UI ФУНКЦИИ ===
-
-export function showToast(message, icon = "") {
+export function showToast(message, icon = "🍔") {
   const c = document.getElementById("toast-container");
   const t = document.createElement("div");
   t.className = "toast";
@@ -22,26 +21,6 @@ export function closeCart(cartModal) {
   document.body.style.overflow = "";
 }
 
-export function openCheckout(checkoutModal, cartTotal, cart) {
-  if (!cart.length) return;
-  const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-  cartTotal.textContent = `${total} ₽`;
-  setTimeout(() => {
-    checkoutModal.classList.add("checkout-modal--active");
-    document.body.style.overflow = "hidden";
-  }, 300);
-}
-
-export function closeCheckout(checkoutModal, checkoutSuccess, checkoutForm) {
-  checkoutModal.classList.remove("checkout-modal--active");
-  checkoutSuccess.classList.remove("checkout-success--active");
-  document.body.style.overflow = "";
-  setTimeout(() => {
-    checkoutForm.reset();
-    clearErrors();
-  }, 300);
-}
-
 export function openConfirmModal(confirmModal) {
   confirmModal.classList.add("confirm-modal--active");
   document.body.style.overflow = "hidden";
@@ -52,7 +31,7 @@ export function closeConfirmModal(confirmModal) {
   document.body.style.overflow = "";
 }
 
-// === ВАЛИДАЦИЯ ФОРМЫ ===
+// === ВАЛИДАЦИЯ ===
 const validators = {
   name: { r: /^[a-zA-Zа-яА-ЯёЁ\s\-]{2,50}$/, e: "nameError" },
   phone: {
@@ -76,19 +55,13 @@ export function clearErrors() {
     .forEach((e) => e.classList.remove("checkout-form__error--visible"));
 }
 
-export function showError(id, eid) {
-  const i = document.getElementById(id),
-    e = document.getElementById(eid);
-  if (i) i.classList.add("checkout-form__input--error");
-  if (e) e.classList.add("checkout-form__error--visible");
-}
-
 export function validateField(fid) {
   const i = document.getElementById(fid);
   if (!i) return false;
   const v = i.value.trim(),
     val = validators[fid],
     err = document.getElementById(val.e);
+
   if (!v.length) {
     i.classList.remove(
       "checkout-form__input--error",
@@ -112,27 +85,33 @@ export function validateField(fid) {
 export function validateForm() {
   let ok = true;
   if (!validators.name.r.test(document.getElementById("name").value.trim())) {
-    showError("name", validators.name.e);
+    document
+      .getElementById("name")
+      .classList.add("checkout-form__input--error");
+    document
+      .getElementById("nameError")
+      .classList.add("checkout-form__error--visible");
     ok = false;
   }
   if (!validators.phone.r.test(document.getElementById("phone").value.trim())) {
-    showError("phone", validators.phone.e);
+    document
+      .getElementById("phone")
+      .classList.add("checkout-form__input--error");
+    document
+      .getElementById("phoneError")
+      .classList.add("checkout-form__error--visible");
     ok = false;
   }
   if (
     !validators.address.r.test(document.getElementById("address").value.trim())
   ) {
-    showError("address", validators.address.e);
+    document
+      .getElementById("address")
+      .classList.add("checkout-form__input--error");
+    document
+      .getElementById("addressError")
+      .classList.add("checkout-form__error--visible");
     ok = false;
   }
   return ok;
-}
-
-export function setupValidation() {
-  Object.keys(validators).forEach((f) => {
-    const i = document.getElementById(f);
-    if (!i) return;
-    i.addEventListener("input", () => validateField(f));
-    i.addEventListener("blur", () => validateField(f));
-  });
 }

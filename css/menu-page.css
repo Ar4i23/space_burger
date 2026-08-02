@@ -1,82 +1,199 @@
-/* === СТРАНИЦЫ МЕНЮ === */
+/* === СТРАНИЦА МЕНЮ === */
 .menu-page {
-  padding: 120px 0 80px;
-  min-height: 100vh;
+  padding: 80px 0 60px;
 }
 
 .menu-page__container {
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 .menu-page__title {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 800;
+  font-size: 48px;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 16px;
+  color: #fff;
 }
 
 .menu-page__title--accent {
-  color: var(--neon-blue);
-  text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+  color: #6c63ff;
 }
 
 .menu-page__subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  margin-bottom: 40px;
   font-size: 18px;
-}
-
-/* === КОНСТРУКТОР НА СТРАНИЦЕ БУРГЕРОВ === */
-.builder {
-  margin-top: 80px;
-  padding-top: 60px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
-}
-
-.builder__title {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800;
+  color: #a0a0a0;
   text-align: center;
-  margin-bottom: 16px;
-}
-
-.builder__title--accent {
-  color: var(--neon-blue);
-  text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
-}
-
-.builder__subtitle {
-  text-align: center;
-  color: var(--text-muted);
   margin-bottom: 40px;
+}
+
+/* === ФИЛЬТРЫ === */
+.menu-filters {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.menu-filters__btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
   font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.builder__empty-state i {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 10px;
-  color: var(--neon-blue);
+.menu-filters__btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.builder__option-visual i {
-  font-size: 32px;
+.menu-filters__btn--active {
+  background: rgba(108, 99, 255, 0.2);
+  border-color: #6c63ff;
+  color: #6c63ff;
 }
 
-.builder__btn-reset i,
-.builder__btn-add i {
-  margin-right: 8px;
+/* === СЕТКА МЕНЮ === */
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
 }
 
-/* Адаптивность */
+/* === КАРТОЧКА ТОВАРА === */
+.menu-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(108, 99, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.menu-card--spicy {
+  border-color: rgba(255, 68, 68, 0.3);
+}
+
+.menu-card--spicy:hover {
+  border-color: rgba(255, 68, 68, 0.6);
+}
+
+/* Модификаторы для разных категорий */
+.menu-card--side .menu-card__img-wrapper,
+.menu-card--sauce .menu-card__img-wrapper,
+.menu-card--drink .menu-card__img-wrapper {
+  height: 220px;
+}
+
+.menu-card--side .menu-card__img,
+.menu-card--sauce .menu-card__img,
+.menu-card--drink .menu-card__img {
+  object-fit: contain;
+  padding: 20px;
+}
+
+.menu-card__img-wrapper {
+  height: 260px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.menu-card:hover .menu-card__img {
+  transform: scale(1.05);
+}
+
+.menu-card__body {
+  padding: 24px;
+}
+
+.menu-card__title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.menu-card__desc {
+  font-size: 14px;
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 44px;
+}
+
+.menu-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-card__footer--sizes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.menu-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #6c63ff;
+}
+
+.menu-card__btn {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+/* Маленькие кнопки для выбора размера */
+.btn--small {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+}
+
+/* === АДАПТИВНОСТЬ === */
 @media (max-width: 768px) {
   .menu-page {
-    padding: 100px 0 60px;
+    padding: 60px 0 40px;
   }
 
-  .builder {
-    margin-top: 60px;
-    padding-top: 40px;
+  .menu-page__title {
+    font-size: 36px;
+  }
+
+  .menu__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .menu-filters {
+    gap: 12px;
+  }
+
+  .menu-filters__btn {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 }

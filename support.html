@@ -13,11 +13,12 @@
     />
   </head>
   <body class="page">
-    <div class="space-bg" aria-hidden="true">
+    <!-- ФОН -->
+    <div class="space-bg">
       <div class="space-bg__layer"></div>
     </div>
 
-    <!-- Шапка -->
+    <!-- ШАПКА -->
     <header class="header">
       <div class="container header__container">
         <a href="index.html" class="logo">
@@ -26,6 +27,7 @@
             >Space<span class="logo__text--accent">Burger</span></span
           >
         </a>
+
         <nav class="nav header__nav" aria-label="Главная навигация">
           <ul class="nav__list">
             <li class="nav__item">
@@ -41,10 +43,12 @@
             </li>
           </ul>
         </nav>
+
         <button
           class="burger-btn header__burger"
           aria-label="Открыть меню"
           aria-expanded="false"
+          type="button"
         >
           <span class="burger-btn__line"></span>
           <span class="burger-btn__line"></span>
@@ -53,7 +57,7 @@
       </div>
     </header>
 
-    <!-- Основной контент -->
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main class="main">
       <section class="support">
         <div class="container support__container">
@@ -64,8 +68,9 @@
             Мы на связи 24/7. Обычно отвечаем за 5 минут.
           </p>
 
-          <!-- Чат -->
+          <!-- ЧАТ -->
           <div class="support__chat">
+            <!-- Шапка чата -->
             <div class="chat-header">
               <div class="chat-header__info">
                 <div class="chat-header__avatar">
@@ -77,14 +82,14 @@
                     <span
                       class="status-indicator status-indicator--online"
                     ></span>
-                    <span class="status-text">Онлайн</span>
+                    <span class="chat-header__status-text">Онлайн</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Сообщения -->
             <div class="chat-messages" id="chatMessages">
-              <!-- Приветственное сообщение -->
               <div class="message message--support">
                 <div class="message__content">
                   <p>Привет! 👋</p>
@@ -102,15 +107,17 @@
               </div>
             </div>
 
+            <!-- Индикатор печати -->
             <div class="chat-typing" id="chatTyping">
-              <div class="typing-indicator">
+              <div class="chat-typing__indicator">
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
-              <span class="typing-text">Support печатает...</span>
+              <span class="chat-typing__text">Support печатает...</span>
             </div>
 
+            <!-- Ввод сообщения -->
             <form class="chat-input" id="chatInput">
               <input
                 type="text"
@@ -123,14 +130,14 @@
               <button
                 type="submit"
                 class="chat-input__btn"
-                aria-label="Отправить"
+                aria-label="Отправить сообщение"
               >
                 <i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
           </div>
 
-          <!-- Дополнительная информация -->
+          <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
           <div class="support__info">
             <div class="info-card">
               <i class="fa-solid fa-clock info-card__icon"></i>
@@ -152,7 +159,7 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ПОДВАЛ -->
     <footer class="footer">
       <div class="container footer__container">
         <div class="footer__col">

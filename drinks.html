@@ -13,10 +13,12 @@
     />
   </head>
   <body class="page">
-    <div class="space-bg" aria-hidden="true">
+    <!-- ФОН -->
+    <div class="space-bg">
       <div class="space-bg__layer"></div>
     </div>
 
+    <!-- ШАПКА -->
     <header class="header">
       <div class="container header__container">
         <a href="index.html" class="logo">
@@ -25,29 +27,34 @@
             >Space<span class="logo__text--accent">Burger</span></span
           >
         </a>
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="index.html" class="nav__link">Главная</a>
-          </li>
-          <li class="nav__item">
-            <a href="burgers.html" class="nav__link">Бургеры</a>
-          </li>
-          <li class="nav__item">
-            <a href="drinks.html" class="nav__link nav__link--active"
-              >Напитки</a
-            >
-          </li>
-          <li class="nav__item">
-            <a href="sauces.html" class="nav__link">Соусы и гарниры</a>
-          </li>
-          <li class="nav__item">
-            <a href="support.html" class="nav__link">Поддержка</a>
-          </li>
-        </ul>
+
+        <nav class="nav header__nav" aria-label="Главная навигация">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link">Главная</a>
+            </li>
+            <li class="nav__item">
+              <a href="burgers.html" class="nav__link">Бургеры</a>
+            </li>
+            <li class="nav__item">
+              <a href="drinks.html" class="nav__link nav__link--active"
+                >Напитки</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="sauces.html" class="nav__link">Соусы и гарниры</a>
+            </li>
+            <li class="nav__item">
+              <a href="support.html" class="nav__link">Поддержка</a>
+            </li>
+          </ul>
+        </nav>
+
         <button class="btn-cart header__cart" aria-label="Открыть корзину">
           <span class="btn-cart__icon">🛒</span>
           <span class="btn-cart__count">0</span>
         </button>
+
         <button
           class="burger-btn header__burger"
           aria-label="Открыть меню"
@@ -60,6 +67,7 @@
       </div>
     </header>
 
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main class="main">
       <section class="menu-page">
         <div class="container menu-page__container">
@@ -70,28 +78,33 @@
             Топливо для космического путешествия
           </p>
 
+          <!-- ФИЛЬТРЫ -->
           <div class="menu-filters">
             <button
               class="menu-filters__btn menu-filters__btn--active"
               data-filter="all"
+              type="button"
             >
               <i class="fa-solid fa-glass-water"></i> Все
             </button>
-            <button class="menu-filters__btn" data-filter="cold">
+            <button class="menu-filters__btn" data-filter="cold" type="button">
               <i class="fa-solid fa-snowflake"></i> Холодные
             </button>
-            <button class="menu-filters__btn" data-filter="hot">
+            <button class="menu-filters__btn" data-filter="hot" type="button">
               <i class="fa-solid fa-mug-hot"></i> Горячие
             </button>
           </div>
 
+          <!-- СЕТКА МЕНЮ -->
           <div class="menu__grid">
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 1 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-cola.webp"
                   alt="Кола"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -112,12 +125,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 2 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-lemonade.webp"
                   alt="Лимонад"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -138,12 +153,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 3 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-morse.webp"
                   alt="Морс"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -162,12 +179,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 4 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-water.webp"
                   alt="Вода"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -186,12 +205,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 5 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-orange.webp"
                   alt="Сок"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -212,12 +233,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="cold">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 6 -->
+            <article class="menu-card menu-card--drink" data-category="cold">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-milkshake.webp"
                   alt="Коктейль"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -236,12 +259,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="hot">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 7 -->
+            <article class="menu-card menu-card--drink" data-category="hot">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-tea.webp"
                   alt="Чай"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -262,12 +287,14 @@
               </div>
             </article>
 
-            <article class="menu-card" data-category="hot">
-              <div class="menu-card__img-wrapper napitki-card__img-wrapper">
+            <!-- Карточка 8 -->
+            <article class="menu-card menu-card--drink" data-category="hot">
+              <div class="menu-card__img-wrapper menu-card__img-wrapper--drink">
                 <img
                   src="img/drink-americano.webp"
                   alt="Кофе"
-                  class="napitki-card__img"
+                  class="menu-card__img"
+                  loading="lazy"
                 />
               </div>
               <div class="menu-card__body">
@@ -292,11 +319,12 @@
       </section>
     </main>
 
+    <!-- ПОДВАЛ -->
     <footer class="footer">
       <div class="container footer__container">
         <div class="footer__col">
           <a href="index.html" class="logo">
-            <span class="logo__icon"></span>
+            <span class="logo__icon">🍔</span>
             <span class="logo__text"
               >Space<span class="logo__text--accent">Burger</span></span
             >
@@ -324,16 +352,18 @@
               rel="noopener noreferrer"
               class="socials__link"
               aria-label="VK"
-              ><i class="fa-brands fa-vk"></i
-            ></a>
+            >
+              <i class="fa-brands fa-vk"></i>
+            </a>
             <a
               href="https://instagram.com/spaceburger"
               target="_blank"
               rel="noopener noreferrer"
               class="socials__link"
               aria-label="Instagram"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -342,10 +372,11 @@
       </div>
     </footer>
 
-    <div class="cart-modal" id="cartModal" aria-hidden="true">
+    <!-- МОДАЛКА КОРЗИНЫ -->
+    <div class="cart-modal" id="cartModal">
       <div class="cart-modal__overlay"></div>
       <div class="cart-modal__content">
-        <button class="cart-modal__close" aria-label="Закрыть">
+        <button class="cart-modal__close" aria-label="Закрыть" type="button">
           <i class="fa-solid fa-xmark"></i>
         </button>
         <h2 class="cart-modal__title">Твоя корзина</h2>
@@ -356,7 +387,11 @@
             <span class="cart-modal__total-price" id="cartTotal">0 ₽</span>
           </div>
           <div class="cart-modal__actions">
-            <button class="btn btn--danger cart-modal__clear" id="clearCartBtn">
+            <button
+              class="btn btn--danger cart-modal__btn cart-modal__btn--clear"
+              id="clearCartBtn"
+              type="button"
+            >
               <i class="fa-solid fa-trash"></i> Очистить
             </button>
             <button class="btn btn--primary cart-modal__checkout">
@@ -366,9 +401,9 @@
         </div>
       </div>
     </div>
-    <div id="toast-container" class="toast-container" aria-live="polite"></div>
-    <!-- Модальное окно подтверждения очистки -->
-    <div class="confirm-modal" id="confirmModal" aria-hidden="true">
+
+    <!-- МОДАЛКА ПОДТВЕРЖДЕНИЯ ОЧИСТКИ -->
+    <div class="confirm-modal" id="confirmModal">
       <div class="confirm-modal__overlay"></div>
       <div class="confirm-modal__content">
         <div class="confirm-modal__icon">
@@ -380,17 +415,136 @@
         </p>
         <div class="confirm-modal__actions">
           <button
-            class="btn btn--secondary confirm-modal__cancel"
+            class="btn btn--secondary confirm-modal__btn confirm-modal__btn--cancel"
             id="confirmCancelBtn"
+            type="button"
           >
             Отмена
           </button>
           <button
-            class="btn btn--danger confirm-modal__confirm"
+            class="btn btn--danger confirm-modal__btn confirm-modal__btn--confirm"
             id="confirmOkBtn"
+            type="button"
           >
             <i class="fa-solid fa-trash"></i> Очистить
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST УВЕДОМЛЕНИЯ -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+    <!-- МОДАЛКА ОФОРМЛЕНИЯ ЗАКАЗА -->
+    <div class="checkout-modal" id="checkoutModal">
+      <div class="checkout-modal__overlay"></div>
+      <div class="checkout-modal__content">
+        <button
+          class="checkout-modal__close"
+          aria-label="Закрыть"
+          type="button"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="checkout-modal__title">Оформление заказа</h2>
+        <p class="checkout-modal__subtitle">Заполни данные для доставки</p>
+
+        <form class="checkout-form" id="checkoutForm" novalidate>
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="name">
+              <i class="fa-solid fa-user checkout-form__icon"></i> Имя
+            </label>
+            <input
+              type="text"
+              id="name"
+              class="checkout-form__input"
+              placeholder="Как к вам обращаться?"
+              required
+            />
+            <span class="checkout-form__error" id="nameError"
+              >Введите корректное имя</span
+            >
+          </div>
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="phone">
+              <i class="fa-solid fa-phone checkout-form__icon"></i> Телефон
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              class="checkout-form__input"
+              placeholder="+7 (999) 123-45-67"
+              required
+            />
+            <span class="checkout-form__error" id="phoneError"
+              >Формат: +7 (999) 123-45-67</span
+            >
+          </div>
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="address">
+              <i class="fa-solid fa-location-dot checkout-form__icon"></i> Адрес
+            </label>
+            <input
+              type="text"
+              id="address"
+              class="checkout-form__input"
+              placeholder="Улица, дом, квартира"
+              required
+            />
+            <span class="checkout-form__error" id="addressError"
+              >Введите полный адрес</span
+            >
+          </div>
+          <div class="checkout-form__group">
+            <label class="checkout-form__label" for="comment">
+              <i class="fa-solid fa-comment checkout-form__icon"></i>
+              Комментарий
+              <span class="checkout-form__optional">(необязательно)</span>
+            </label>
+            <textarea
+              id="comment"
+              class="checkout-form__input checkout-form__textarea"
+              placeholder="Пожелания к заказу"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="checkout-form__summary">
+            <div class="checkout-form__total">
+              <span>Итого:</span>
+              <span class="checkout-form__total-price" id="checkoutTotal"
+                >0 ₽</span
+              >
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary checkout-form__submit">
+            <span class="checkout-form__submit-text"
+              ><i class="fa-solid fa-rocket"></i> Отправить</span
+            >
+            <span class="checkout-form__submit-loading" style="display: none"
+              ><span class="spinner"></span> Отправляем...</span
+            >
+          </button>
+        </form>
+
+        <!-- Экран успеха -->
+        <div
+          class="checkout-success"
+          id="checkoutSuccess"
+          style="display: none"
+        >
+          <div class="checkout-success__content">
+            <div class="checkout-success__rocket">🚀</div>
+            <h3 class="checkout-success__title">Заказ принят!</h3>
+            <p class="checkout-success__text">
+              Бургер летит к вам!<br />Свяжемся через 5 минут.
+            </p>
+            <button
+              class="btn btn--primary checkout-success__btn"
+              id="successCloseBtn"
+              type="button"
+            >
+              Отлично!
+            </button>
+          </div>
         </div>
       </div>
     </div>

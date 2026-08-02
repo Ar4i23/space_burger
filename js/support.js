@@ -1,130 +1,134 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === ЭЛЕМЕНТЫ DOM ===
   const chatMessages = document.getElementById("chatMessages");
   const chatInput = document.getElementById("chatInput");
   const messageField = document.getElementById("messageField");
   const chatTyping = document.getElementById("chatTyping");
+  const burgerBtn = document.querySelector(".burger-btn");
+  const nav = document.querySelector(".nav");
+  const navLinks = document.querySelectorAll(".nav__link");
 
-  let messageId = 1;
+  // === ОТПРАВКА СООБЩЕНИЯ ===
+  if (chatInput) {
+    chatInput.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const message = messageField.value.trim();
+      if (!message) return;
 
-  // Отправка сообщения
-  chatInput.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const message = messageField.value.trim();
-    if (!message) return;
+      // Добавляем сообщение пользователя
+      addMessage(message, "user");
+      messageField.value = "";
 
-    // Добавляем сообщение пользователя
-    addUserMessage(message);
-    messageField.value = "";
+      // Показываем индикатор печати
+      showTyping();
 
-    // Показываем индикатор "печатает"
-    showTyping();
-
-    // Имитация ответа через 2-4 секунды
-    setTimeout(
-      () => {
-        hideTyping();
-        addSupportMessage(getRandomResponse());
-      },
-      2000 + Math.random() * 2000,
-    );
-  });
-
-  // Добавление сообщения пользователя
-  function addUserMessage(text) {
-    const messageDiv = document.createElement("div");
-    messageDiv.className = "message message--user";
-    messageDiv.innerHTML = `
-      <div class="message__content">
-        <p>${text}</p>
-      </div>
-      <div class="message__meta">
-        <span class="message__time">${getCurrentTime()}</span>
-        <span class="message__status message__status--sent">
-          <i class="fa-solid fa-check"></i>
-        </span>
-      </div>
-    `;
-
-    chatMessages.appendChild(messageDiv);
-    scrollToBottom();
-
-    // Обновляем статус на "прочитано" через 1 секунду
-    setTimeout(() => {
-      const statusIcon = messageDiv.querySelector(".message__status i");
-      statusIcon.className = "fa-solid fa-check-double";
-      messageDiv
-        .querySelector(".message__status")
-        .classList.remove("message__status--sent");
-      messageDiv
-        .querySelector(".message__status")
-        .classList.add("message__status--read");
-    }, 1000);
-  }
-
-  // Добавление сообщения поддержки
-  function addSupportMessage(text) {
-    const messageDiv = document.createElement("div");
-    messageDiv.className = "message message--support";
-    messageDiv.innerHTML = `
-      <div class="message__content">
-        <p>${text}</p>
-      </div>
-      <div class="message__meta">
-        <span class="message__time">${getCurrentTime()}</span>
-      </div>
-    `;
-
-    chatMessages.appendChild(messageDiv);
-    scrollToBottom();
-  }
-
-  // Показать индикатор печати
-  function showTyping() {
-    chatTyping.classList.add("chat-typing--active");
-    scrollToBottom();
-  }
-
-  // Скрыть индикатор печати
-  function hideTyping() {
-    chatTyping.classList.remove("chat-typing--active");
-  }
-
-  // Прокрутка вниз
-  function scrollToBottom() {
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  // Текущее время
-  function getCurrentTime() {
-    const now = new Date();
-    return now.toLocaleTimeString("ru-RU", {
-      hour: "2-digit",
-      minute: "2-digit",
+      // Имитация ответа поддержки
+      setTimeout(
+        () => {
+          hideTyping();
+          const response = getSupportResponse(message);
+          addMessage(response, "support");
+        },
+        1500 + Math.random() * 1000,
+      );
     });
   }
 
-  // Случайные ответы для демо
-  function getRandomResponse() {
-    const responses = [
-      "Спасибо за ваше сообщение! Мы обязательно свяжемся с вами в ближайшее время. 🚀",
-      "Понял вас! Сейчас проверю информацию и отвечу. ☕",
-      "Отличный вопрос! Дайте мне пару минут, чтобы найти точный ответ. ",
-      "Хорошо, я вас услышал. Сейчас уточню детали у нашей команды. 👨‍🍳",
-      "Благодарю за обращение! Мы ценим ваших клиентов и постараемся помочь как можно скорее. 💫",
-      "Интересная ситуация! Позвольте мне изучить это подробнее. 🌟",
-    ];
-    return responses[Math.floor(Math.random() * responses.length)];
+  // === ДОБАВЛЕНИЕ СООБЩЕНИЯ ===
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `message message--${sender}`;
+
+    const time = new Date().toLocaleTimeString("ru-RU", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    messageDiv.innerHTML = `
+      <div class="message__content">
+        <p>${text}</p>
+      </div>
+      <div class="message__meta">
+        <span class="message__time">${time}</span>
+        ${
+          sender === "user"
+            ? `
+          <span class="message__status">
+            <i class="fa-solid fa-check"></i>
+          </span>
+        `
+            : ""
+        }
+      </div>
+    `;
+
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  // Мобильное меню
-  const burgerBtn = document.querySelector(".burger-btn");
-  const nav = document.querySelector(".nav");
+  // === ПОКАЗ ИНДИКАТОРА ПЕЧАТИ ===
+  function showTyping() {
+    if (chatTyping) {
+      chatTyping.classList.add("chat-typing--active");
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }
 
-  if (burgerBtn) {
+  // === СКРЫТИЕ ИНДИКАТОРА ПЕЧАТИ ===
+  function hideTyping() {
+    if (chatTyping) {
+      chatTyping.classList.remove("chat-typing--active");
+    }
+  }
+
+  // === ОТВЕТЫ ПОДДЕРЖКИ ===
+  function getSupportResponse(message) {
+    const lowerMessage = message.toLowerCase();
+
+    if (lowerMessage.includes("время") || lowerMessage.includes("доставк")) {
+      return "Доставка занимает 30-45 минут. Мы работаем круглосуточно! 🚀";
+    } else if (
+      lowerMessage.includes("цена") ||
+      lowerMessage.includes("стоим") ||
+      lowerMessage.includes("сколько")
+    ) {
+      return "Цены указаны в меню. При заказе от 1000₽ доставка бесплатная! ";
+    } else if (
+      lowerMessage.includes("оплат") ||
+      lowerMessage.includes("платит")
+    ) {
+      return "Принимаем наличные и карты при получении. Также можно оплатить онлайн! 💳";
+    } else if (lowerMessage.includes("адрес") || lowerMessage.includes("где")) {
+      return "Мы находимся по адресу: ул. Галактическая, 42. Работаем по всей Москве! 📍";
+    } else if (
+      lowerMessage.includes("спасиб") ||
+      lowerMessage.includes("благодар")
+    ) {
+      return "Всегда рады помочь! Приятного аппетита! 🌟";
+    } else if (
+      lowerMessage.includes("привет") ||
+      lowerMessage.includes("здравств")
+    ) {
+      return "Привет! 👋 Чем можем помочь?";
+    } else {
+      return "Спасибо за сообщение! Наш оператор скоро ответит вам. Обычно это занимает до 5 минут. ⏱️";
+    }
+  }
+
+  // === МОБИЛЬНОЕ МЕНЮ ===
+  if (burgerBtn && nav) {
     burgerBtn.addEventListener("click", () => {
       const isActive = nav.classList.toggle("nav--active");
       burgerBtn.setAttribute("aria-expanded", isActive);
       burgerBtn.classList.toggle("burger-btn--active");
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("nav--active");
+        burgerBtn.setAttribute("aria-expanded", "false");
+        burgerBtn.classList.remove("burger-btn--active");
+      });
     });
   }
 });
