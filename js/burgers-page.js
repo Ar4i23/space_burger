@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const category = filter.dataset.filter;
       cards.forEach((card) => {
-        if (category === "all" || card.dataset.category === category) {
+        if (category === "all" || card.dataset.category.includes(category)) {
           card.style.display = "block";
           setTimeout(() => {
             card.style.opacity = "1";

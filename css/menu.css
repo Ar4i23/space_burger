@@ -162,12 +162,6 @@
   box-shadow: 0 10px 30px rgba(184, 41, 255, 0.25);
 }
 
-.menu-card--colorful .menu-card__price {
-  background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .menu-card__img {
   width: 100%;
   height: 220px;

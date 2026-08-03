@@ -1,4 +1,8 @@
-/* === СТРАНИЦА МЕНЮ === */
+/* ============================================
+   СТРАНИЦА МЕНЮ — SPACE BURGER
+   ============================================ */
+
+/* === ОСНОВНАЯ СТРУКТУРА === */
 .menu-page {
   padding: 80px 0 60px;
 }
@@ -91,27 +95,31 @@
   border-color: rgba(255, 68, 68, 0.6);
 }
 
-/* Модификаторы для разных категорий */
-.menu-card--side .menu-card__img-wrapper,
-.menu-card--sauce .menu-card__img-wrapper,
-.menu-card--drink .menu-card__img-wrapper {
-  height: 220px;
+.menu-card--premium {
+  border-color: rgba(255, 215, 0, 0.3);
 }
 
-.menu-card--side .menu-card__img,
-.menu-card--sauce .menu-card__img,
-.menu-card--drink .menu-card__img {
-  object-fit: contain;
-  padding: 20px;
+.menu-card--premium:hover {
+  border-color: rgba(255, 215, 0, 0.6);
 }
 
+.menu-card--big {
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.menu-card--big:hover {
+  border-color: rgba(255, 107, 107, 0.6);
+}
+
+/* === ОБЁРТКА ИЗОБРАЖЕНИЯ (как на странице напитков) === */
 .menu-card__img-wrapper {
   height: 260px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px 12px 0 0;
 }
 
 .menu-card__img {
@@ -125,15 +133,17 @@
   transform: scale(1.05);
 }
 
+/* === ТЕЛО КАРТОЧКИ === */
 .menu-card__body {
   padding: 24px;
 }
 
+/* === ЕДИНЫЕ СТИЛИ ЦВЕТОВ ДЛЯ ВСЕХ КАРТОЧЕК === */
 .menu-card__title {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #fff;
+  color: #ffffff !important;
 }
 
 .menu-card__desc {
@@ -150,27 +160,15 @@
   align-items: center;
 }
 
-.menu-card__footer--sizes {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 .menu-card__price {
   font-size: 24px;
   font-weight: 700;
-  color: #6c63ff;
+  color: #6c63ff !important;
 }
 
 .menu-card__btn {
   padding: 10px 20px;
   font-size: 14px;
-}
-
-/* Маленькие кнопки для выбора размера */
-.btn--small {
-  padding: 8px 12px !important;
-  font-size: 12px !important;
 }
 
 /* === АДАПТИВНОСТЬ === */
@@ -195,5 +193,35 @@
   .menu-filters__btn {
     padding: 10px 16px;
     font-size: 14px;
+  }
+
+  .menu-card__img-wrapper {
+    height: 220px;
+  }
+
+  .menu-card__title {
+    font-size: 20px;
+  }
+
+  .menu-card__price {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-page__title {
+    font-size: 32px;
+  }
+
+  .menu-page__subtitle {
+    font-size: 16px;
+  }
+
+  .menu-card__img-wrapper {
+    height: 200px;
+  }
+
+  .menu-card__body {
+    padding: 20px;
   }
 }
