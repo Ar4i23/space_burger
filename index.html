@@ -191,6 +191,169 @@
         </div>
       </section>
 
+      <!-- ПРОГРАММА ЛОЯЛЬНОСТИ -->
+      <section class="loyalty" id="loyaltySection">
+        <div class="container loyalty__container">
+          <div class="loyalty__header">
+            <h2 class="loyalty__title">
+              Космическая
+              <span class="loyalty__title--accent">программа лояльности</span>
+            </h2>
+            <p class="loyalty__subtitle">
+              Совершай заказы, повышай ранг и получай крутые бонусы. Чем больше
+              заказов — тем вкуснее скидки!
+            </p>
+          </div>
+
+          <!-- Текущий статус -->
+          <div class="loyalty__status">
+            <div class="loyalty__rank-display">
+              <span class="loyalty__rank-icon">🥉</span>
+              <div class="loyalty__rank-info">
+                <div class="loyalty__rank-label">Ваш текущий ранг</div>
+                <div class="loyalty__rank-name">Кадет</div>
+                <div class="loyalty__rank-bonus">Базовые бонусы</div>
+              </div>
+            </div>
+
+            <div class="loyalty__progress-wrapper">
+              <div class="loyalty__progress-info">
+                <span
+                  >Прогресс:
+                  <strong class="loyalty__progress-current">0</strong>
+                  заказов</span
+                >
+                <span
+                  >Следующий ранг:
+                  <strong class="loyalty__progress-next">4</strong></span
+                >
+              </div>
+              <div class="loyalty__progress-bar">
+                <div class="loyalty__progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Сетка рангов -->
+          <div class="loyalty__ranks">
+            <div class="loyalty__rank-card" data-rank="Кадет">
+              <span class="loyalty__rank-card-icon"></span>
+              <h3 class="loyalty__rank-card-name">Кадет</h3>
+              <p class="loyalty__rank-card-orders">0-3 заказа</p>
+              <div class="loyalty__rank-card-bonus">Базовые бонусы</div>
+            </div>
+
+            <div class="loyalty__rank-card" data-rank="Пилот">
+              <span class="loyalty__rank-card-icon">🥈</span>
+              <h3 class="loyalty__rank-card-name">Пилот</h3>
+              <p class="loyalty__rank-card-orders">4-9 заказов</p>
+              <div class="loyalty__rank-card-bonus">Скидка 5%</div>
+            </div>
+
+            <div class="loyalty__rank-card" data-rank="Капитан">
+              <span class="loyalty__rank-card-icon">🥇</span>
+              <h3 class="loyalty__rank-card-name">Капитан</h3>
+              <p class="loyalty__rank-card-orders">10-19 заказов</p>
+              <div class="loyalty__rank-card-bonus">Скидка 10% + напиток</div>
+            </div>
+
+            <div class="loyalty__rank-card" data-rank="Командор">
+              <span class="loyalty__rank-card-icon">👑</span>
+              <h3 class="loyalty__rank-card-name">Командор</h3>
+              <p class="loyalty__rank-card-orders">20+ заказов</p>
+              <div class="loyalty__rank-card-bonus">Скидка 15% + приоритет</div>
+            </div>
+          </div>
+
+          <!-- Секретное меню -->
+          <div class="secret-menu">
+            <div class="secret-menu__content">
+              <span class="secret-menu__icon"></span>
+              <h3 class="secret-menu__title">Секретное меню</h3>
+              <p class="secret-menu__text">
+                У нас есть бургеры, которых нет в обычном меню. Они доступны
+                только посвящённым. Введи кодовое слово, чтобы получить доступ к
+                эксклюзивным позициям!
+              </p>
+
+              <form class="secret-menu__form">
+                <input
+                  type="text"
+                  class="secret-menu__input"
+                  placeholder="Введи кодовое слово"
+                  autocomplete="off"
+                />
+                <button type="submit" class="secret-menu__btn">
+                  <i class="fa-solid fa-unlock"></i> Разблокировать
+                </button>
+              </form>
+
+              <div class="secret-menu__message"></div>
+            </div>
+
+            <!-- Секретные позиции (скрыты по умолчанию) -->
+            <div class="secret-items">
+              <h4 class="secret-items__title">🌟 Эксклюзивные позиции</h4>
+              <div class="secret-items__grid">
+                <article class="menu-card menu-card--premium">
+                  <div class="menu-card__img-wrapper">
+                    <img
+                      src="img/secret-burger-1.png"
+                      alt="Чёрная дыра XL"
+                      class="menu-card__img"
+                    />
+                  </div>
+                  <div class="menu-card__body">
+                    <h3 class="menu-card__title">Чёрная дыра XL 🌑</h3>
+                    <p class="menu-card__desc">
+                      5 котлет, 3 вида сыра, бекон, халапеньо и секретный соус
+                      "Тёмная материя"
+                    </p>
+                    <div class="menu-card__footer">
+                      <span class="menu-card__price">990 ₽</span>
+                      <button
+                        type="button"
+                        class="btn btn--secondary menu-card__btn"
+                        data-id="100"
+                      >
+                        В корзину
+                      </button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="menu-card menu-card--spicy">
+                  <div class="menu-card__img-wrapper">
+                    <img
+                      src="img/secret-burger-2.png"
+                      alt="Квантовый взрыв"
+                      class="menu-card__img"
+                    />
+                  </div>
+                  <div class="menu-card__body">
+                    <h3 class="menu-card__title">Квантовый взрыв 💥</h3>
+                    <p class="menu-card__desc">
+                      Двойная котлета, три острых соуса, перец чили и хрустящий
+                      лук
+                    </p>
+                    <div class="menu-card__footer">
+                      <span class="menu-card__price">690 ₽</span>
+                      <button
+                        type="button"
+                        class="btn btn--secondary menu-card__btn"
+                        data-id="101"
+                      >
+                        В корзину
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- О НАС -->
       <section class="about" id="about">
         <div class="container about__container">

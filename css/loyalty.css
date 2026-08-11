@@ -1,0 +1,449 @@
+/* ============================================
+   ПРОГРАММА ЛОЯЛЬНОСТИ — SPACE BURGER
+   ============================================ */
+
+.loyalty {
+  padding: 80px 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(108, 99, 255, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.loyalty__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.loyalty__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.loyalty__title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.loyalty__title--accent {
+  background: linear-gradient(135deg, #6c63ff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loyalty__subtitle {
+  font-size: 18px;
+  color: #a0a0a0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* === ТЕКУЩИЙ РАНГ ПОЛЬЗОВАТЕЛЯ === */
+.loyalty__status {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.loyalty__rank-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.loyalty__rank-icon {
+  font-size: 64px;
+  filter: drop-shadow(0 0 20px rgba(108, 99, 255, 0.5));
+  animation: rankPulse 2s ease-in-out infinite;
+}
+
+@keyframes rankPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.loyalty__rank-info {
+  text-align: left;
+}
+
+.loyalty__rank-label {
+  font-size: 14px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.loyalty__rank-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.loyalty__rank-bonus {
+  font-size: 16px;
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+/* === ПРОГРЕСС-БАР === */
+.loyalty__progress-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.loyalty__progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.loyalty__progress-info strong {
+  color: #fff;
+}
+
+.loyalty__progress-bar {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loyalty__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6c63ff 0%, #00d4ff 100%);
+  border-radius: 10px;
+  transition: width 0.8s ease;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+  position: relative;
+}
+
+.loyalty__progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* === СЕТКА РАНГОВ === */
+.loyalty__ranks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.loyalty__rank-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.loyalty__rank-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(108, 99, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.loyalty__rank-card--active {
+  border-color: #6c63ff;
+  background: rgba(108, 99, 255, 0.08);
+  box-shadow: 0 0 40px rgba(108, 99, 255, 0.2);
+}
+
+.loyalty__rank-card--active::before {
+  content: "ТЕКУЩИЙ";
+  position: absolute;
+  top: 16px;
+  right: -32px;
+  background: #6c63ff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 40px;
+  transform: rotate(45deg);
+  letter-spacing: 1px;
+}
+
+.loyalty__rank-card-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.loyalty__rank-card-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.loyalty__rank-card-orders {
+  font-size: 14px;
+  color: #a0a0a0;
+  margin-bottom: 16px;
+}
+
+.loyalty__rank-card-bonus {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6c63ff;
+  padding: 12px;
+  background: rgba(108, 99, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* === СЕКРЕТНОЕ МЕНЮ === */
+.secret-menu {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.1) 0%,
+    rgba(0, 212, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.secret-menu::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(108, 99, 255, 0.1) 0%,
+    transparent 70%
+  );
+  animation: secretGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes secretGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.secret-menu__content {
+  position: relative;
+  z-index: 1;
+}
+
+.secret-menu__icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.secret-menu__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.secret-menu__text {
+  font-size: 16px;
+  color: #a0a0a0;
+  margin-bottom: 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.secret-menu__form {
+  display: flex;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.secret-menu__input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.secret-menu__input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+}
+
+.secret-menu__input::placeholder {
+  color: #666;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.secret-menu__btn {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #6c63ff 0%, #00d4ff 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.4);
+}
+
+.secret-menu__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(108, 99, 255, 0.6);
+}
+
+.secret-menu__message {
+  margin-top: 20px;
+  font-size: 16px;
+  min-height: 24px;
+}
+
+.secret-menu__message--success {
+  color: #00c853;
+}
+
+.secret-menu__message--error {
+  color: #ff4444;
+}
+
+/* === СЕКРЕТНЫЕ КАРТОЧКИ (скрыты по умолчанию) === */
+.secret-items {
+  display: none;
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+.secret-items--visible {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.secret-items__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.secret-items__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+  .loyalty {
+    padding: 60px 0;
+  }
+
+  .loyalty__title {
+    font-size: 32px;
+  }
+
+  .loyalty__status {
+    padding: 24px;
+  }
+
+  .loyalty__rank-display {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .loyalty__rank-info {
+    text-align: center;
+  }
+
+  .loyalty__rank-name {
+    font-size: 24px;
+  }
+
+  .loyalty__ranks {
+    grid-template-columns: 1fr;
+  }
+
+  .secret-menu {
+    padding: 32px 20px;
+  }
+
+  .secret-menu__title {
+    font-size: 24px;
+  }
+
+  .secret-menu__form {
+    flex-direction: column;
+  }
+}

@@ -1,3 +1,4 @@
+import { initLoyalty, incrementOrders, applyDiscount } from "./loyalty.js";
 import { products } from "./data.js";
 import {
   loadCart,
@@ -279,22 +280,23 @@ document.addEventListener("DOMContentLoaded", () => {
       sendOrderToTelegram(orderData)
         .then((result) => {
           if (result.ok) {
-            // ГЛАВНОЕ ИСПРАВЛЕНИЕ: Прячем форму, показываем успех
-            if (checkoutForm) {
-              checkoutForm.style.display = "none";
-            }
+            console.log("✅ Заказ успешно отправлен!");
 
+            // УВЕЛИЧИВАЕМ СЧЁТЧИК ЗАКАЗОВ
+            const newOrdersCount = incrementOrders();
+            console.log(" Всего заказов:", newOrdersCount);
+
+            // Прячем форму, показываем успех
+            if (checkoutForm) checkoutForm.style.display = "none";
             if (checkoutSuccess) {
               checkoutSuccess.style.display = "flex";
               checkoutSuccess.classList.add("checkout-success--active");
             }
 
-            // Очищаем корзину
             localStorage.removeItem("spaceBurgerCart");
             clearCart();
             updateCartCount(cartCount);
           } else {
-            console.error("❌ Telegram вернул ошибку:", result);
             alert("Ошибка отправки заказа. Попробуйте позже.");
           }
         })
@@ -435,4 +437,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === ИНИЦИАЛИЗАЦИЯ ОТЗЫВОВ ===
   initReviews();
+  // === ИНИЦИАЛИЗАЦИЯ ПРОГРАММЫ ЛОЯЛЬНОСТИ ===
+  initLoyalty();
 });
